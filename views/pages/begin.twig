@@ -1,10 +1,10 @@
 {{include('partials/header.twig')}}
 
-	<div class="decoration">
-		<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
-		<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
-		<div class="clear"></div>
-	</div>
+<div class="decoration">
+	<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
+	<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
+	<div class="clear"></div>
+</div>
 
 <div class="timeline">
 	<div class="date">
@@ -51,7 +51,12 @@
 	<p>- Paulo Coelho / L'Alchimiste</p>
 </div>
 
-</body>
-</html>
+<script type="text/javascript">
+// redirect to google after 5 seconds
+window.setTimeout(function() {
+	window.location.href = '{{app.request.basepath}}/story';
+}, 6200);
+</script>
+
 
 {{include('partials/footer.twig')}}
