@@ -77,6 +77,33 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
 })
 ->bind('begin');
 
+// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
+$app->get('/story', function() use ($app, $fb, $facebook) {
+
+	$data = array();
+    $data['title_page'] = 'L\'expérience';
+    $data['page_class'] = 'story';
+
+    $facebookLogin = $facebook->getURL($fb);
+    $data['loginUrl'] = $facebookLogin;
+
+	return $app['twig']->render('pages/story.twig', $data);
+})
+->bind('story');
+
+// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
+$app->get('/dilemma', function() use ($app, $fb, $facebook) {
+
+	$data = array();
+    $data['title_page'] = 'Dilemme';
+    $data['page_class'] = 'dilemma';
+
+    $facebookLogin = $facebook->getURL($fb);
+    $data['loginUrl'] = $facebookLogin;
+
+	return $app['twig']->render('pages/dilemma.twig', $data);
+})
+->bind('dilemma');
 
 // BROWSE
 $app->get('/browse', function() use ($app, $fb, $facebook) {
