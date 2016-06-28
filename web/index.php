@@ -53,7 +53,7 @@ $fb = new Facebook\Facebook([
 $app->get('/', function() use ($app, $fb, $facebook) {
 
 	$data = array();
-    $data['title_page'] = 'Accueil';
+    $data['title_page'] = 'Transhumania';
     $data['page_class'] = 'home';
 
     $facebookLogin = $facebook->getURL($fb);

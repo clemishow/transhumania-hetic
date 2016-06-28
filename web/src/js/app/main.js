@@ -1,3 +1,5 @@
+// REFRESH BROWSE PAGE TO DELETE CODE VARIABLE IN URL
+
 var count = localStorage.getItem('count');
 if ($('body').hasClass('browse')) {
     if (count == 0) {
