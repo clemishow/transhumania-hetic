@@ -34,7 +34,7 @@
 
 			$helper = $fb->getRedirectLoginHelper();
 		    $permissions = ['email', 'public_profile', 'user_birthday', 'user_location']; 
-		    $loginUrl = $helper->getReRequestUrl(' '. URL .'/browse', $permissions);
+		    $loginUrl = $helper->getLoginUrl(URL .'/browse', $permissions);
 
 		    return $loginUrl;
 			
@@ -46,7 +46,7 @@
 		    $helper = $fb->getRedirectLoginHelper();
 		    // CREATE AN TOKEN ACCESS
 		    try {
-		      $accessToken = $helper->getAccessToken();
+		      $accessToken = $helper->getAccessToken(URL . '/browse');
 		    } catch(Facebook\Exceptions\FacebookResponseException $e) {
 		      // When Graph returns an error
 		      echo 'Graph erreur : ' . $e->getMessage();
@@ -81,9 +81,9 @@
 		    try {
 		      // PUT WHAT TO GET ON THE USER
 		    if (isset($_COOKIE['fbToken'])) {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location', $_COOKIE['fbToken']);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,birthday', $_COOKIE['fbToken']);
 		    } else {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location', $longLivedAccessToken);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,birthday', $longLivedAccessToken);
 		    }
 		    } catch(Facebook\Exceptions\FacebookResponseException $e) {
 		      echo 'Graph erreur : ' . $e->getMessage();

@@ -49,7 +49,7 @@ $fb = new Facebook\Facebook([
 
 // ROUTES
 
-// HOME
+// LOGIN
 $app->get('/', function() use ($app, $fb, $facebook) {
 
 	$data = array();
@@ -59,12 +59,12 @@ $app->get('/', function() use ($app, $fb, $facebook) {
     $facebookLogin = $facebook->getURL($fb);
     $data['loginUrl'] = $facebookLogin;
 
-	return $app['twig']->render('pages/login.twig', $data);
+    return $app['twig']->render('pages/login.twig', $data);
 })
 ->bind('login');
 
 
-// BROWSE
+// HOME
 $app->get('/browse', function() use ($app, $fb, $facebook) {
 
 	$data = array();
@@ -102,10 +102,11 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
 
     // GET DATA ABOUT USER IN DB
     $facebookID     = $data['user']['id'];
-    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID     = '$facebookID'");
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
     $execute        = $prepare->execute();
     $userDB         = $prepare->fetchAll();
     $data['userDB'] = $userDB;
+    
     
 	return $app['twig']->render('pages/browse.twig', $data);
 
