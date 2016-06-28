@@ -1,0 +1,59 @@
+{{include('partials/header.twig')}}
+		<h1 class="title-page">{{title_page}}</h1>
+		<div class="site-wrapper">
+			<div class="container-off">
+				<a href="{{url('logout')}}">
+					<i class="material-icons">power_settings_new</i>
+				</a>
+			</div>
+			<div class="row">
+				<div class="col m12">
+					{% if errors is not empty  %}
+						<div class="alert">
+							{% for _error in errors %}
+								<div>{{_error}}</div>
+							{% endfor %}
+						</div>
+					{% endif %}
+					{% if success is not empty  %}
+						<div class="succes">
+							{% for _success in success %}
+								<div>{{_success}}</div>
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
+		</div>
+			<div class="row">
+				<div class="col m4">
+					<div class="container-profile-picture">
+					 	<img class="profile-picture" src="{{user.picture.url}}">
+					 </div>
+				</div>
+				<div class="offset-m1 col m7">
+					<form action="{{url('account')}}" method="post">
+						<div class="input-field">
+				          <input name="firstName" id="first_name" type="text" class="validate" value="{{userDB.0.firstName}}">
+				          <label for="first_name">First name</label>
+				        </div>
+				        <div class="input-field">
+				          <input name="lastName" id="last_name" type="text" class="validate" value="{{userDB.0.lastName}}">
+				          <label for="last_name">Last name</label>
+				        </div>
+				        <div class="input-field">
+				          <input name="email" id="email" type="email" class="validate" value="{{userDB.0.email}}">
+				          <label for="email">Email</label>
+				        </div>
+				        <div class="input-field">
+				          <input name="location" id="location" type="text" class="validate" value="{{userDB.0.location}}">
+				          <label for="location">Adresse</label>
+				        </div>
+				         <div class="input-field">
+				         	<input name="modify-account" type="submit" class="btn" value="Register">
+				        </div>
+					</form>
+				</div>
+			</div>  
+		</div>
+		
+{{include('partials/footer.twig')}}

@@ -1,0 +1,28 @@
+/*
+*** SET UP
+*/
+
+@import 'partials/_variables.scss';
+@import 'partials/_fonts.scss';
+@import 'partials/_mixins.scss';
+
+/*
+*** GENERAL
+*/
+
+body {
+	font-family: $font-body;
+	background: url('../images/background.png');
+	color: $color-light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-title;
+}
+
+
+/*
+*** MEDIAS QUERIES
+*/
+
+@import 'partials/_medias-queries.scss';
