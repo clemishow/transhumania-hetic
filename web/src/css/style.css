@@ -314,6 +314,7 @@
 }
 
 footer {
+  z-index: 99;
   position: absolute;
   background-color: #252525;
   width: 100%;
@@ -382,6 +383,344 @@ footer a:active {
   width: 10px;
   margin-right: 15px;
   fill: white;
+}
+
+.story {
+  overflow: hidden;
+  cursor: default;
+}
+
+.story p {
+  color: white;
+}
+
+.image-placeholder {
+  position: absolute;
+  background-image: url("../images/images-story/emilia-clarke.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-placeholder img {
+  width: 100%;
+}
+
+.hover-informations {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+}
+
+.information-element {
+  position: absolute;
+  width: 30rem;
+}
+
+.information-element:nth-child(1) {
+  top: 9vw;
+  left: 55vw;
+}
+
+.information-element:nth-child(2) {
+  top: 20vw;
+  left: 46vw;
+}
+
+.information-element:nth-child(3) {
+  top: 28vw;
+  left: 36vw;
+}
+
+.circle-pointer {
+  position: relative;
+  background-color: #4a90e2;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 1px 2px 5px -1px black;
+}
+
+.circle-pointer .circle-hover {
+  z-index: -1;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+  border-radius: 50px;
+  transform: translateY(-1px) translateX(-1px) scale(0);
+  transform-origin: center;
+  transition: all .3s;
+}
+
+.circle-pointer .circle-hover .line {
+  background-color: white;
+  opacity: 0;
+  width: 200px;
+  height: 2px;
+  margin-top: .5rem;
+  margin-left: 1.25rem;
+  transform: rotate(11deg);
+  transform-origin: left;
+  transition: all .3s ease-in-out .2s;
+}
+
+.circle-pointer:hover .circle-hover {
+  opacity: 1;
+  transform: translateY(-1px) translateX(-1px) scale(1.5);
+}
+
+.circle-pointer:hover .circle-hover .line {
+  opacity: 1;
+}
+
+.circle-pointer:hover + .information-panel {
+  opacity: 1;
+  transform: translateX(-15px) translateY(0) translateZ(0);
+}
+
+.circle-pointer:hover + .information-panel .title {
+  opacity: 1;
+  transform: translateX(-15px) translateY(0) translateZ(0);
+}
+
+.circle-pointer:hover + .information-panel .aside-picture {
+  transform: translateX(5px) translateY(5px) translateZ(0);
+}
+
+.information-panel {
+  position: absolute;
+  background-color: #4a90e2;
+  opacity: 0;
+  width: 18vw;
+  display: inline-block;
+  left: 10vw;
+  margin-left: 1rem;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  transform: translateX(0) translateY(0) translateZ(0);
+  transition: all .3s;
+  box-shadow: 0px 2px 9px -2px black;
+}
+
+.information-panel .title {
+  position: absolute;
+  background-color: white;
+  opacity: 0;
+  width: 17vw;
+  color: #4a90e2;
+  font-size: 1.5rem;
+  top: 0;
+  margin-top: -1rem;
+  margin-left: 1rem;
+  padding: .5rem 1rem;
+  transform: translateX(0) translateY(0) translateZ(0);
+  transition: all .3s ease-in-out;
+  box-shadow: 0px 2px 9px -3px black;
+}
+
+.information-panel .description {
+  color: #fefefe;
+  font-family: "Abrade-Light",sans-serif;
+  line-height: 1.4;
+}
+
+.information-panel .source {
+  font-family: "Abrade-Book",sans-serif;
+  font-size: .8rem;
+  margin-top: .5rem;
+}
+
+.information-panel .aside-picture {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  top: 1vw;
+  right: -4vw;
+  transform: translateX(0) translateY(0) translateZ(0);
+  transition: all .3s;
+  box-shadow: -1px 1px 4px -1px black;
+}
+
+.information-panel .aside-picture img {
+  width: 100%;
+}
+
+.panel-controller {
+  box-shadow: 1px -1px 8px -1px black;
+  position: absolute;
+  z-index: 99;
+  background-color: #252525;
+  width: 100%;
+  bottom: 0;
+  padding: 2rem 3rem 4rem 3rem;
+  transition: all ease-in-out .3s;
+  transform: translateX(0) translateY(18.25rem) translateZ(0);
+}
+
+.panel-controller .body-situation {
+  display: inline-block;
+}
+
+.panel-controller .identity {
+  display: inline-block;
+  color: white;
+  vertical-align: top;
+}
+
+.panel-controller .identity .row {
+  margin: 0rem 0rem 1rem 0rem;
+}
+
+.panel-controller .identity .row .data-item {
+  display: inline-block;
+  margin: 0rem 1.5rem 0rem 3.5rem;
+}
+
+.panel-controller .identity .row .data-item h2 {
+  color: white;
+  font-family: "Abrade-Medium",sans-serif;
+  font-size: .8rem;
+  margin: 0;
+}
+
+.panel-controller .identity .row .data-item h3 {
+  color: #59d8e6;
+  font-family: "Abrade-Light",sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: .3rem;
+}
+
+.panel-controller .identity .row .data-item.left {
+  margin-left: 6rem;
+}
+
+.panel-controller .identity .row .data-item img {
+  margin-top: 1rem;
+}
+
+.panel-controller.active {
+  transform: translateX(0) translateY(0) translateZ(0);
+}
+
+.panel-controller.active .switcher > img {
+  transform: rotate(90deg);
+}
+
+.separator {
+  background-color: white;
+  width: 1px;
+  height: 10vw;
+  display: inline-block;
+  transform: translateY(-3rem) translateX(3rem);
+}
+
+.upgrades-status {
+  display: inline-block;
+  color: white;
+  vertical-align: top;
+  margin-left: 6.5rem;
+}
+
+.upgrades-status .row {
+  margin: 0rem 0rem 1rem 0rem;
+}
+
+.upgrades-status .row .data-item {
+  display: inline-block;
+  margin: 0rem 1.5rem 0rem 3.5rem;
+}
+
+.upgrades-status .row .data-item h2 {
+  color: white;
+  font-family: "Abrade-Medium",sans-serif;
+  font-size: .8rem;
+  margin: 0;
+}
+
+.upgrades-status .row .data-item h3 {
+  color: #59d8e6;
+  font-family: "Abrade-Light",sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: .3rem;
+}
+
+.upgrades-status .row .data-item.locked {
+  opacity: .5;
+}
+
+.upgrades-status .row .data-item.locked h3 {
+  color: grey;
+}
+
+.upgrades-status .row .data-item.success h3 {
+  color: #85db18;
+}
+
+.upgrades-status .row .data-item.failed h3 {
+  color: #dc3522;
+}
+
+.upgrades-status .row .data-item.left {
+  margin-left: 2.72rem;
+}
+
+.upgrades-status .row .data-item.left-2 {
+  margin-left: 2rem;
+}
+
+.switcher {
+  cursor: pointer;
+  position: absolute;
+  z-index: 3;
+  background-color: #252525;
+  width: 23px;
+  height: 20px;
+  top: -30px;
+  left: 50vw;
+  padding: .3rem;
+  transition: all .3s;
+}
+
+.switcher img {
+  width: 100%;
+  height: 100%;
+  transition: all .3s;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.switcher:hover {
+  background-color: #3c3c3c;
+}
+
+.switcher:active {
+  background-color: #252525;
+}
+
+.overlay {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  opacity: 0;
+  transition: all .2s;
+}
+
+.overlay.active {
+  z-index: 1;
+  opacity: 0.5;
 }
 
 /*

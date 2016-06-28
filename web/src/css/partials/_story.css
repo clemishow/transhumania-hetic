@@ -1,0 +1,15 @@
+.story p {
+  color: white;
+}
+
+.test {
+  position: absolute;
+  width: 100vw;
+  height: 100px;
+  overflow: hidden;
+  background-color: red;
+}
+
+.test img {
+  width: 100%;
+}
