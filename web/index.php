@@ -17,7 +17,7 @@ $app = new Silex\Application();
 
 $app['debug'] = true;
 
-// SERVICES 
+// SERVICES
 
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -49,7 +49,7 @@ $fb = new Facebook\Facebook([
 
 // ROUTES
 
-// LOGIN
+// HOME
 $app->get('/', function() use ($app, $fb, $facebook) {
 
 	$data = array();
@@ -59,12 +59,26 @@ $app->get('/', function() use ($app, $fb, $facebook) {
     $facebookLogin = $facebook->getURL($fb);
     $data['loginUrl'] = $facebookLogin;
 
-    return $app['twig']->render('pages/login.twig', $data);
+	return $app['twig']->render('pages/login.twig', $data);
 })
 ->bind('login');
 
+// FIRST ENTRANCE - QUOTE
+$app->get('/begin', function() use ($app, $fb, $facebook) {
 
-// HOME
+	$data = array();
+    $data['title_page'] = 'Point de départ';
+    $data['page_class'] = 'begin';
+
+    $facebookLogin = $facebook->getURL($fb);
+    $data['loginUrl'] = $facebookLogin;
+
+	return $app['twig']->render('pages/begin.twig', $data);
+})
+->bind('begin');
+
+
+// BROWSE
 $app->get('/browse', function() use ($app, $fb, $facebook) {
 
 	$data = array();
@@ -84,7 +98,7 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
 
         if ($user)
             return 1;
-        else 
+        else
             return 0;
     }
 
@@ -102,21 +116,20 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
 
     // GET DATA ABOUT USER IN DB
     $facebookID     = $data['user']['id'];
-    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID     = '$facebookID'");
     $execute        = $prepare->execute();
     $userDB         = $prepare->fetchAll();
     $data['userDB'] = $userDB;
-    
-    
+
 	return $app['twig']->render('pages/browse.twig', $data);
 
 })
 ->bind('browse');
 
-// LOGOUT 
+// LOGOUT
 $app->get('/logout', function() use($app) {
 
-    $data = array();   
+    $data = array();
     $data['clearCookie'] = setcookie('fbToken', '', time() + 60*24*3600, null, null, false, true);
     $data['destroy'] = session_destroy();
     $data['session_destroy'] = $_SESSION['facebook_access_token'] = '';
@@ -128,10 +141,3 @@ $app->get('/logout', function() use($app) {
 
 
 $app->run();
-
-
-
-
-
-
-

@@ -1,14 +1,24 @@
-<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="{{app.request.basepath}}/src/css/style.css">
-	</head>
-	<body>
-		<a href="{{loginUrl}}">
-			<!-- <img class="facebook-icon" src="{{app.request.basepath}}/src/images/facebook-icon.svg" alt="facebook icon"> -->
+{{include('partials/header.twig')}}
+
+	<div class="decoration">
+		<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
+		<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
+		<div class="clear"></div>
+	</div>
+	<div class="main-core">
+		<img src="{{app.request.basepath}}/src/images/transhumania_logo-02.svg" alt="Logo de Transhumania">
+		<p>Embarquez dans une expérience immersive et interactive dans le monde de l’humain augmenté. Quand la science fiction dépasse la réalité.</p>
+		<a class="facebook-button" href="{{loginUrl}}">
+			<img src="{{app.request.basepath}}/src/images/facebook_icon.svg" alt="Icone de Facebook">
 			Démarrer l'expérience
+			<img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite">
 		</a>
-	</body>
-	</html>	
+		<div class="background-video">
+			<div class="overlay"></div>
+			<video loop autoplay src="{{app.request.basepath}}/src/medias/bg_video.mp4"></video>
+		</div>
+	</div>
+</body>
+</html>
+
 {{include('partials/footer.twig')}}

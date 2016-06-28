@@ -27,15 +27,355 @@
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
+.login {
+  background-color: #181818;
+}
+
+.decoration {
+  padding: 2rem 2rem 0rem 2rem;
+}
+
+.decoration img {
+  float: left;
+}
+
+.decoration img:nth-child(2) {
+  float: right;
+  transform: rotate(90deg);
+}
+
+.main-core {
+  z-index: 1;
+  text-align: center;
+  padding-top: 10rem;
+}
+
+.main-core img {
+  max-width: 30rem;
+}
+
+.main-core p {
+  width: 65vw;
+  color: white;
+  font-family: "Abrade-Light",sans-serif;
+  margin: auto;
+  padding-bottom: 4rem;
+}
+
+.facebook-button {
+  font-family: "Abrade-Light",sans-serif;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  margin: auto;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: .8rem;
+  letter-spacing: .40px;
+  transition: all .2s;
+}
+
+.facebook-button img {
+  transform: translateY(4px) translateX(-6px);
+}
+
+.facebook-button img:nth-child(2) {
+  opacity: 0.5;
+  transform: translateY(7px) translateX(10px);
+  transition: all .2s .1s;
+  animation: translateYoyo 2s ease-in-out 0s alternate infinite running forwards;
+}
+
+.facebook-button:hover {
+  border: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.facebook-button:hover img {
+  opacity: 1;
+}
+
+.facebook-button:hover img:nth-child(2) {
+  opacity: 1;
+}
+
+.facebook-button:hover + .background-video > video {
+  transform: rotate(5deg) scale(1.03);
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  position: absolute;
+}
+
+.background-video .overlay {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  opacity: 0.8;
+  background-color: black;
+}
+
+.background-video video {
+  transition: transform .3s;
+  left: 0;
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+
+@keyframes translateYoyo {
+  0% {
+    transform: translateY(7px) translateX(15px);
+  }
+  100% {
+    transform: translateY(7px) translateX(5px);
+  }
+}
+
+.begin {
+  background-color: black;
+}
+
+.timeline {
+  position: relative;
+  margin: auto;
+  width: 50vw;
+  text-align: center;
+  opacity: 0;
+  animation: appearTimeline 1s ease-in-out .5s normal running 1 forwards;
+}
+
+.timeline .date {
+  display: inline-block;
+  width: 40px;
+  margin-top: -.4rem;
+  text-align: center;
+  padding-left: 2rem;
+  opacity: 0;
+}
+
+.timeline .date:nth-child(1) {
+  animation: appearDate 0.3s ease-in-out 1.15s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(2) {
+  animation: appearDate 0.3s ease-in-out 1.3s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(3) {
+  animation: appearDate 0.3s ease-in-out 1.45s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(4) {
+  animation: appearDate 0.3s ease-in-out 1.6s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(5) {
+  animation: appearDate 0.3s ease-in-out 1.75s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(6) {
+  animation: appearDate 0.3s ease-in-out 1.9s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(7) {
+  animation: appearDate 0.3s ease-in-out 2.05s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(8) {
+  animation: appearDate 0.3s ease-in-out 2.2s normal running 1 forwards;
+}
+
+.timeline .date:nth-child(9) {
+  animation: appearDate 0.3s ease-in-out 2.35s normal running 1 forwards;
+}
+
+.timeline .date.passed .circle {
+  background-color: #7d7d7d;
+  border: 2px solid #e9e9e9;
+}
+
+.timeline .date.passed .time {
+  opacity: 0.5;
+}
+
+.timeline .date.expand {
+  transform: translateY(10px);
+}
+
+.timeline .date.expand .circle {
+  width: 15px;
+  height: 15px;
+  background-color: #f9a746;
+}
+
+.timeline .date.expand .time {
+  font-size: 1.25rem;
+}
+
+.timeline .date .circle {
+  width: 8px;
+  height: 8px;
+  margin: auto;
+  background-color: #59d8e6;
+  border: 2px solid white;
+  border-radius: 50px;
+}
+
+.timeline .date .time {
+  margin-top: .85rem;
+  color: white;
+  font-size: .8rem;
+}
+
+.timeline .line {
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 1px;
+  margin-top: -2.3rem;
+  background-color: white;
+  z-index: -1;
+}
+
+.quote {
+  font-family: "Times",serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 14rem;
+  padding-left: 30vw;
+  width: 100%;
+  text-align: left;
+  color: white;
+  animation: appearTimeline 1s ease-in-out 0s normal running 1 forwards;
+}
+
+.quote p {
+  margin: 0;
+  padding-bottom: .5rem;
+}
+
+.quote p:nth-child(2) {
+  opacity: 0.6;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+@keyframes appearTimeline {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes appearDate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+footer {
+  position: absolute;
+  background-color: #252525;
+  width: 100%;
+  overflow: hidden;
+  font-size: .8rem;
+  bottom: 0;
+  padding: .5rem 0rem;
+  box-shadow: 1px 1px 10px -1px black;
+}
+
+footer a {
+  opacity: .5;
+  color: white;
+  font-family: "Abrade-Thin",sans-serif;
+  font-size: .7rem;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  transition: all .2s;
+}
+
+footer a:hover {
+  background-color: white;
+  opacity: .7;
+  color: #282c34;
+  font-family: "Abrade-Thin",sans-serif;
+}
+
+footer a:hover svg {
+  fill: #181818;
+}
+
+footer a:active {
+  background-color: transparent;
+  opacity: .7;
+  color: #282c34;
+  font-family: "Abrade-Thin",sans-serif;
+}
+
+.line-separator {
+  background-color: white;
+  opacity: .5;
+  width: 1px;
+  height: 15px;
+  display: inline-block;
+  transform: translateY(4px);
+}
+
+.left-section {
+  float: left;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.right-section {
+  float: right;
+  text-align: right;
+  padding-right: 1rem;
+  cursor: pointer;
+}
+
+.right-section a {
+  padding: 1rem 1rem;
+}
+
+.right-section svg {
+  width: 10px;
+  margin-right: 15px;
+  fill: white;
+}
+
 /*
 *** GENERAL
 */
 body {
+  margin: 0;
   font-family: "Muli";
-  color: #353535; }
+  color: #353535;
+  background-color: #353535;
+}
+
+.clear {
+  clear: both;
+}
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Rubik"; }
+  font-family: "Rubik";
+}
 
 /*
 *** MEDIAS QUERIES
@@ -46,6 +386,6 @@ h1, h2, h3, h4, h5, h6 {
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
     left: 48% !important;
-    transform: translateX(-48%) !important; } }
-
-/*# sourceMappingURL=style.css.map */
+    transform: translateX(-48%) !important;
+  }
+}

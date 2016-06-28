@@ -1,0 +1,98 @@
+.login{
+  background-color: #181818;
+}
+.decoration{
+  padding: 2rem 2rem 0rem 2rem;
+  img{
+    float: left;
+    &:nth-child(2){
+      float: right;
+      transform: rotate(90deg);
+    }
+  }
+}
+.main-core{
+  z-index: 1;
+  text-align: center;
+  padding-top: 10rem;
+  img{
+    max-width: 30rem;
+  }
+  p{
+    width: 65vw;
+    color: white;
+    font-family: "Abrade-Light",sans-serif;
+    margin: auto;
+    padding-bottom: 4rem;
+  }
+}
+
+.facebook-button{
+  font-family: "Abrade-Light",sans-serif;
+  border: 2px solid rgba(255, 255, 255, .5);
+  margin: auto;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: .8rem;
+  letter-spacing: .40px;
+  transition: all .2s;
+  img{
+    transform: translateY(4px) translateX(-6px);
+    &:nth-child(2){
+      opacity: 0.5;
+      transform: translateY(7px) translateX(10px);
+      transition: all .2s .1s;
+      animation: translateYoyo 2s ease-in-out 0s alternate infinite running forwards;
+    }
+  }
+  &:hover{
+    border: 2px solid rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, .2);
+    img{
+      opacity: 1;
+    }
+    img:nth-child(2){
+      opacity: 1;
+    }
+    + .background-video>video{
+      transform: rotate(5deg) scale(1.03);
+    }
+  }
+}
+
+.background-video{
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  position: absolute;
+  .overlay{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.8;
+    background-color: black;
+  }
+  video{
+    transition: transform .3s;
+    left: 0;
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+  }
+}
+
+
+@keyframes translateYoyo {
+  0%{
+    transform: translateY(7px) translateX(15px);
+  }
+  100%{
+    transform: translateY(7px) translateX(5px);
+  }
+}

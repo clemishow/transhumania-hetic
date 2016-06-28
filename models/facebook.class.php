@@ -5,7 +5,7 @@
 		public $fb;
 
 		public function __construct($fb) {
-			
+
 			$this->fb = $fb;
 
 			$fb = new Facebook\Facebook([
@@ -25,7 +25,7 @@
 
 	        if ($user)
 	            return 1;
-	        else 
+	        else
 	            return 0;
 	    }
 
@@ -33,20 +33,20 @@
 		public function getURL($fb) {
 
 			$helper = $fb->getRedirectLoginHelper();
-		    $permissions = ['email', 'public_profile', 'user_birthday', 'user_location']; 
-		    $loginUrl = $helper->getLoginUrl(URL .'/browse', $permissions);
+		    $permissions = ['email', 'public_profile', 'user_birthday', 'user_location'];
+		    $loginUrl = $helper->getReRequestUrl(' '. URL .'/browse', $permissions);
 
 		    return $loginUrl;
-			
+
 		}
 
-		// CREATE TOKEN & COOKIE & A ACCOUNT ON DB / GET RESPONSE 
+		// CREATE TOKEN & COOKIE & A ACCOUNT ON DB / GET RESPONSE
 		public function getUserInfos($fb) {
 			// FACEBOOK
 		    $helper = $fb->getRedirectLoginHelper();
 		    // CREATE AN TOKEN ACCESS
 		    try {
-		      $accessToken = $helper->getAccessToken(URL . '/browse');
+		      $accessToken = $helper->getAccessToken();
 		    } catch(Facebook\Exceptions\FacebookResponseException $e) {
 		      // When Graph returns an error
 		      echo 'Graph erreur : ' . $e->getMessage();
@@ -64,7 +64,7 @@
 		    } else {
 		        $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 		    }
-		    
+
 		    // IF TOKEN ACCESS EXIST -> CREATE A SESSION
 		    if (isset($longLivedAccessToken)) {
 		        $_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
@@ -81,9 +81,9 @@
 		    try {
 		      // PUT WHAT TO GET ON THE USER
 		    if (isset($_COOKIE['fbToken'])) {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,birthday', $_COOKIE['fbToken']);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location', $_COOKIE['fbToken']);
 		    } else {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,birthday', $longLivedAccessToken);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location', $longLivedAccessToken);
 		    }
 		    } catch(Facebook\Exceptions\FacebookResponseException $e) {
 		      echo 'Graph erreur : ' . $e->getMessage();
@@ -94,65 +94,9 @@
 		    }
 
 		    // GET DATA ABOUT USER W/ FACEBOOK
-		    
+
 		    $user = $response->getGraphUser();
 
 		    return $user;
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

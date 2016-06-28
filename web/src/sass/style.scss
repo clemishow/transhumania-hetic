@@ -5,14 +5,23 @@
 @import 'partials/_variables.scss';
 @import 'partials/_fonts.scss';
 @import 'partials/_mixins.scss';
+@import 'partials/_home.scss';
+@import 'partials/_begin.scss';
+@import 'partials/_footer.scss';
 
 /*
 *** GENERAL
 */
 
 body {
+	margin: 0;
 	font-family: $font-body;
 	color: $color-dark;
+	background-color: $color-dark;
+}
+
+.clear{
+	clear: both;
 }
 
 h1, h2, h3, h4, h5, h6 {

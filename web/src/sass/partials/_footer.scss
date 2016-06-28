@@ -1,0 +1,62 @@
+footer{
+  position: absolute;
+  background-color: #252525;
+  width: 100%;
+  overflow: hidden;
+  font-size: .8rem;
+  bottom: 0;
+  padding: .5rem 0rem;
+  box-shadow: 1px 1px 10px -1px black;
+  a{
+    opacity: .5;
+    color: white;
+    font-family: "Abrade-Thin",sans-serif;
+    font-size: .7rem;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: all .2s;
+    &:hover{
+      background-color: white;
+      opacity: .7;
+      color: #282c34;
+      font-family: "Abrade-Thin",sans-serif;
+      svg{
+        fill: #181818;
+      }
+    }
+    &:active{
+      background-color: transparent;
+      opacity: .7;
+      color: #282c34;
+      font-family: "Abrade-Thin",sans-serif;
+    }
+  }
+}
+.line-separator{
+  background-color: white;
+  opacity: .5;
+  width: 1px;
+  height: 15px;
+  display: inline-block;
+  transform: translateY(4px);
+}
+.left-section{
+  float: left;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.right-section{
+  float: right;
+  text-align: right;
+  padding-right: 1rem;
+  cursor: pointer;
+  a{
+    padding: 1rem 1rem;
+  }
+  svg{
+    width: 10px;
+    margin-right: 15px;
+
+    fill: white;
+  }
+}
