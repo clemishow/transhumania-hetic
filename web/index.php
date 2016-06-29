@@ -74,6 +74,10 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
     // GET USER DATA
     $facebookUser = $facebook->getUserInfos($fb);
     $data['user'] = $facebookUser;
+    echo '<pre>';
+    print_r($facebookUser);
+    echo '</pre>';
+    die();
 
     $date_birthday = array();
     foreach ($facebookUser['birthday'] as $facebookInfo) {
@@ -98,6 +102,14 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
         $data['user']['gender'] = 'Masculin';
     } else {
         $data['user']['gender'] = 'Feminin';
+    }
+
+    if (empty($data['user']['location']['name'])) {
+        $data['user']['location']['name'] = 'Non communiqué';
+    }
+
+    if (empty($age)) {
+        $age = 'Non communiqué';
     }
 
     // CREATE ACCOUNT
