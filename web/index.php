@@ -74,10 +74,6 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
     // GET USER DATA
     $facebookUser = $facebook->getUserInfos($fb);
     $data['user'] = $facebookUser;
-    echo '<pre>';
-    print_r($facebookUser);
-    echo '</pre>';
-    die();
 
     $date_birthday = array();
     foreach ($facebookUser['birthday'] as $facebookInfo) {
