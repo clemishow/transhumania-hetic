@@ -1,14 +1,12 @@
-{{include('partials/header.twig')}}
-
 <div class="dilemma-panel">
   <div class="left-choice">
     <div class="text">
       <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus tempore, labore! Officiis, minus necessitatibus repellat dolores, eos, aliquam, est eius quam voluptatibus molestiae nisi eum vel saepe dolorem nobis temporibus.</h2>
       <h1>Friendzoner Émilia</h1>
       <div class="signature">
-        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
-        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
-        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="src/images/right_arrow.svg" alt="Flèche droite"></div>
         <div id="cursor-signature-left" class="cursor"></div>
         <div class="line"></div>
         <div id="validation-left" class="validation"></div>
@@ -20,9 +18,9 @@
       <h1>Épouser Émilia</h1>
       <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus tempore, labore! Officiis, minus necessitatibus repellat dolores, eos, aliquam, est eius quam voluptatibus molestiae nisi eum vel saepe dolorem nobis temporibus.</h2>
       <div class="signature">
-        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
-        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
-        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="src/images/right_arrow.svg" alt="Flèche droite"></div>
         <div id="cursor-signature-right" class="cursor"></div>
         <div class="line"></div>
         <div id="validation-right" class="validation"></div>
@@ -36,7 +34,6 @@
 <script type="text/javascript">
 
 function onSwipeValid(direction,redirection){
-  console.log(direction);
   var that = this;
   that.swipe = {};
   that.swipe.container = document.querySelector('.'+direction+'-choice');
@@ -62,14 +59,12 @@ function onSwipeValid(direction,redirection){
     that.x_pos = document.all ? window.event.clientX : e.pageX;
     if (that.selected !== null) {
       var ratio = that.x_pos - that.x_elem;
-      console.log("ratio", ratio);
-;      console.log(that)
       if (ratio < 0) {
         ratio = 0;
       } else if (ratio > that.limit) {
         ratio = that.limit + that.validation_size;
         that.swipe.cursor_signature.style.backgroundColor = "green";
-        window.location.href = '{{app.request.basepath}}/'+redirection;
+        window.location.href = 'http://localhost:9999/transhumania-hetic/web/'+redirection;
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
       }
@@ -83,16 +78,12 @@ function onSwipeValid(direction,redirection){
   // Bind the functions...
   that.cursor = document.getElementById('cursor-signature-'+direction);
   that.cursor.onmousedown = function () {
-    console.log("ma bite");
     that._drag_init(that.cursor);
     return false;
   };
   this.swipe.container.onmousemove = this._move_elem;
   this.swipe.container.onmouseup = this._destroy;
-
-  console.log(this);
 }
-
 
 var left = new onSwipeValid("left","begin");
 var right = new onSwipeValid("right","story");
@@ -100,4 +91,3 @@ var right = new onSwipeValid("right","story");
 
 </script>
 
-{{include('partials/footer.twig')}}

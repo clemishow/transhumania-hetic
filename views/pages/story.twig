@@ -1,4 +1,5 @@
 {{include('partials/header.twig')}}
+<div class="dilemma-page"></div>
 <div class="hover-informations">
   <!-- Item information-element : BEGIN -->
   <div class="information-element">
@@ -120,9 +121,72 @@
 <div class="audio-controller"></div>
 
 <script type="text/javascript">
+function onSwipeValid(direction,redirection){
+  var that = this;
+  that.swipe = {};
+  that.swipe.container = document.querySelector('.'+direction+'-choice');
+
+  // RIGHT
+  that.swipe.cursor_signature = document.getElementById('cursor-signature-'+direction);
+  that.selected = null, // Object of the element to be moved
+  that.x_pos = 0, that.y_pos = 0, // Stores x & y coordinates of the mouse pointer
+  that.x_elem = 0, that.y_elem = 0; // Stores top, left values (edge) of the element
+  // Will be called when user starts dragging an element
+  that._drag_init = function(elem) {
+    // Store the object of the element which needs to be moved
+    that.selected = elem;
+    that.x_elem = that.x_pos - that.selected.offsetLeft;
+  }
+  // Will be called when user dragging an element
+  that.swipe.validation = document.querySelector('#validation-'+direction);
+  that.validation_size = parseInt(window.getComputedStyle(that.swipe.validation).getPropertyValue("width").substring(2, -3));
+  that.validation_size /= 6.5;
+  that.limit = that.swipe.validation.offsetLeft ;
+  that._move_elem = function(e) {
+
+    that.x_pos = document.all ? window.event.clientX : e.pageX;
+    if (that.selected !== null) {
+      var ratio = that.x_pos - that.x_elem;
+      if (ratio < 0) {
+        ratio = 0;
+      } else if (ratio > that.limit) {
+        ratio = that.limit + that.validation_size;
+        that.swipe.cursor_signature.style.backgroundColor = "green";
+        window.location.href = 'http://localhost:9999/transhumania-hetic/web/'+redirection;
+      } else if(ratio < 259){
+        that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
+      }
+      that.selected.style.left = ratio + 'px';
+    }
+  }
+  // Destroy the object when we are done
+  that._destroy = function() {
+    that.selected = null;
+  }
+  // Bind the functions...
+  that.cursor = document.getElementById('cursor-signature-'+direction);
+  that.cursor.onmousedown = function () {
+    that._drag_init(that.cursor);
+    return false;
+  };
+  this.swipe.container.onmousemove = this._move_elem;
+  this.swipe.container.onmouseup = this._destroy;
+}
 window.addEventListener("keydown",function(event){
   if (event.which == 32){
-    window.location.href = '{{app.request.basepath}}/dilemma';
+    // AJAX
+    var dilemma = document.querySelector('.dilemma-page');
+    var request = new XMLHttpRequest();
+    request.open('GET', '../views/pages/dilemma.twig', true);
+    request.onreadystatechange = function() {
+        if(this.readyState == 4) {
+            dilemma.innerHTML = this.responseText;
+            var left = new onSwipeValid("left","begin");
+            var right = new onSwipeValid("right","story");
+        }
+    }
+    request.send();
+    request = null;
   }
 });
 </script>
