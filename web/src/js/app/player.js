@@ -200,6 +200,68 @@ window.addEventListener('keydown', function(e) {
 	}
 });
 
+function FullScreenIn() {
+	if (player.video.requestFullscreen) {
+  		player.video.requestFullscreen();
+  		player.container_controls.style.position = 'absolute';
+		player.container_controls.style.top = '93%';
+		player.container_controls.style.width = '100%';
+		player.icon_fullScreen_button.classList.remove('fa-expand');
+		player.icon_fullScreen_button.classList.add('fa-compress');
+	} 
+
+	else if (player.video.mozRequestFullScreen) {
+  		player.video.mozRequestFullScreen();
+  		player.container_controls.style.position = 'absolute';
+		player.container_controls.style.top = '93%';
+		player.container_controls.style.width = '100%';
+		player.icon_fullScreen_button.classList.remove('fa-expand');
+		player.icon_fullScreen_button.classList.add('fa-compress');
+	} 
+
+	else if (player.video.webkitRequestFullscreen) {
+  		player.video.webkitRequestFullscreen();
+  		player.container_controls.style.position = 'absolute';
+		player.container_controls.style.top = '93%';
+		player.container_controls.style.width = '100%';
+		player.icon_fullScreen_button.classList.remove('fa-expand');
+		player.icon_fullScreen_button.classList.add('fa-compress');
+	}
+}
+
+function FullScreenOut() {
+	if (document.cancelFullScreen) {
+        document.cancelFullScreen();
+        	player.container_controls.style.position = 'relative';
+			player.container_controls.style.top = '-22px';
+			player.container_controls.style.width = '100%'; 
+			player.icon_fullScreen_button.classList.remove('fa-compress');
+			player.icon_fullScreen_button.classList.add('fa-expand');
+			compteur_fullscreen = 0;
+    }
+
+    else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+        	player.container_controls.style.position = 'relative';
+			player.container_controls.style.top = '-22px';
+			player.container_controls.style.width = '100%';
+			player.icon_fullScreen_button.classList.remove('fa-compress');
+			player.icon_fullScreen_button.classList.add('fa-expand');
+			compteur_fullscreen = 0;
+    } 
+
+    else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+        setTimeout(function() {
+        	player.container_controls.style.position = 'relative';
+			player.container_controls.style.top = '-22px';
+			player.container_controls.style.width = '100%';
+			player.icon_fullScreen_button.classList.remove('fa-compress');
+			player.icon_fullScreen_button.classList.add('fa-expand');
+			compteur_fullscreen = 0;
+        },100)
+    }
+} 
 
 
 /**

@@ -32,6 +32,8 @@ if (event.which == 40 && panel.classList.contains("active")) {
 }
 });
 
+
+// FULLSCREEN NATIF
 var count_fullScreen = 0;
 function FullScreenIn() {
   document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
@@ -69,6 +71,52 @@ function FullScreenIn() {
         },300);
   }
 }
+
+
+function player() {
+  var  player        = {};
+
+  // GENERAL
+  player.container               = document.querySelector('.player');
+  player.video                   = player.container.querySelector('video');
+  player.container_controls      = player.container.querySelector('.controls');
+  // PROGRESS BAR 
+  player.seek_bar                = player.container.querySelector('.seek-bar');
+  player.cursor_bar              = player.container.querySelector('.cursor-bar');
+  player.progress_bar            = player.container.querySelector('.progress-bar');
+  // BUTTON
+  player.volume                  = document.querySelector('.volume-btn');
+
+
+  player.video.volume = 0;
+
+  // PLAY
+  function play() {
+    player.video.play();
+  }
+
+  // PAUSE
+  function pause() {
+    player.video.pause();
+  }
+
+  // VOLUME 
+  function volume() {
+    if (player.video.volume == 1) {
+      player.video.volume = 0;
+      console.log(player.video.volume);
+    } else if (player.video.volume == 0) {
+      player.video.volume = 1;
+      console.log(player.video.volume);
+    }
+  }
+
+  player.volume.addEventListener('click', function(){
+    volume();
+  });
+
+}
+
 
 
 
