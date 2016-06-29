@@ -1,7 +1,9 @@
 {{include('partials/header.twig')}}
 
+<!-- BLOCK PAGE => ACUTAL PAGE AJAX -->
 <div class="block-page"></div>
 
+<!-- PROFILE & TIMELINE INFO -->
 <div class="image-placeholder"></div>
 <div class="overlay"></div>
 <div id="panel" class="panel-controller">
@@ -76,24 +78,56 @@
 <div class="audio-controller"></div>
 
 <script type="text/javascript">
+/*
+*** FUNCTION AJAX
+*/
+function page_ajax(page) {
+    var block_page = document.querySelector('.block-page');
+    var request = new XMLHttpRequest();
+    request.open('GET', '../views/pages/' + page + '.twig', true);
+    request.onreadystatechange = function() {
+        if(this.readyState == 4) {
+            block_page.innerHTML = this.responseText;
+        }
+    }
+    request.send();
+    request = null;
+}
+
+/*
+*** FUNCTION AJAX DILEMMA 
+*/
+function page_ajax_dilemma(page, url_left, url_right) {
+    var block_page = document.querySelector('.block-page');
+    var request = new XMLHttpRequest();
+    request.open('GET', '../views/pages/' + page + '.twig', true);
+    request.onreadystatechange = function() {
+        if(this.readyState == 4) {
+            block_page.innerHTML = this.responseText;
+            // TRIGGER FUNCTION SWIPE
+            var left = new onSwipeValid("left",url_left);
+            var right = new onSwipeValid("right",url_right);
+        }
+    }
+    request.send();
+    request = null;
+}
+
+/*
+*** TRIGGER DILEMMA ON SPACE TOUCHE
+*/
+window.addEventListener("keydown",function(event) {
+  if (event.which == 32) {
+    page_ajax_dilemma('dilemma', 'browse', 'try');
+  }
+});
 
 /*
 *** INIT 
 */
 
-var block_page = document.querySelector('.block-page');
-    var request = new XMLHttpRequest();
-    request.open('GET', '../views/pages/info_01.twig', true);
-    request.onreadystatechange = function() {
-        if(this.readyState == 4) {
-            block_page.innerHTML = this.responseText;
-            // TRIGGER FUNCTION SWIPE
-            var left = new onSwipeValid("left","browse");
-            var right = new onSwipeValid("right","try");
-        }
-    }
-    request.send();
-    request = null;
+page_ajax('info_01');
+
 
 /*
 *** SWIPE
@@ -134,16 +168,7 @@ function onSwipeValid(direction,page) {
         that.swipe.cursor_signature.style.backgroundColor = "green";
 
         // AJAX REDIRECTION AFTER SWIPE
-        var block_page = document.querySelector('.block-page');
-        var request = new XMLHttpRequest();
-        request.open('GET', '../views/pages/'+page+'.twig', true);
-        request.onreadystatechange = function() {
-            if(this.readyState == 4) {
-                block_page.innerHTML = this.responseText;
-            }
-        }
-        request.send();
-        request = null;
+        page_ajax(page);
 
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
@@ -167,35 +192,6 @@ function onSwipeValid(direction,page) {
   this.swipe.container.onmousemove = this._move_elem;
   this.swipe.container.onmouseup = this._destroy;
 }
-
-/*
-*** TRIGGER DILEMMA 
-*/
-window.addEventListener("keydown",function(event){
-  if (event.which == 32){
-    // AJAX
-    var block_page = document.querySelector('.block-page');
-    var request = new XMLHttpRequest();
-    request.open('GET', '../views/pages/dilemma.twig', true);
-    request.onreadystatechange = function() {
-        if(this.readyState == 4) {
-            block_page.innerHTML = this.responseText;
-            // TRIGGER FUNCTION SWIPE
-            var left = new onSwipeValid("left","browse");
-            var right = new onSwipeValid("right","try");
-        }
-    }
-    request.send();
-    request = null;
-  }
-});
-
-
-function timeLine() {
-
-}
-
-
 
 </script>
 
