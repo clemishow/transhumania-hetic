@@ -35,7 +35,12 @@
 
 <script type="text/javascript">
 
-var cursor_signature_right = document.getElementById('cursor-signature-right')
+var right = {};
+right.container = document.querySelector('.right-choice');
+
+// RIGHT
+right.cursor_signature_right = document.getElementById('cursor-signature-right');
+
 var selected = null, // Object of the element to be moved
 x_pos = 0, y_pos = 0, // Stores x & y coordinates of the mouse pointer
 x_elem = 0, y_elem = 0; // Stores top, left values (edge) of the element
@@ -46,10 +51,10 @@ function _drag_init(elem) {
   x_elem = x_pos - selected.offsetLeft;
 }
 // Will be called when user dragging an element
-var validation_right = document.querySelector('#validation-right');
-var validation_size = parseInt(window.getComputedStyle(validation_right).getPropertyValue("width").substring(2, -3));
+right.validation_right = document.querySelector('#validation-right');
+var validation_size = parseInt(window.getComputedStyle(right.validation_right).getPropertyValue("width").substring(2, -3));
 validation_size /= 6.5;
-var limit = validation_right.offsetLeft ;
+var limit = right.validation_right.offsetLeft ;
 function _move_elem(e) {
 
   x_pos = document.all ? window.event.clientX : e.pageX;
@@ -61,10 +66,10 @@ function _move_elem(e) {
       ratio = 0;
     } else if (ratio > limit) {
       ratio = limit + validation_size;
-      cursor_signature_right.style.backgroundColor = "green";
-      window.location.href = '{{app.request.basepath}}/begin';
+      right.cursor_signature_right.style.backgroundColor = "green";
+      window.location.href = '{{app.request.basepath}}/right';
     } else if(ratio < 259){
-      cursor_signature_right.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
+      right.cursor_signature_right.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
     }
     selected.style.left = ratio + 'px';
   }
@@ -81,7 +86,11 @@ document.getElementById('cursor-signature-right').onmousedown = function () {
 document.onmousemove = _move_elem;
 document.onmouseup = _destroy;
 
-var cursor_signature_left = document.getElementById('cursor-signature-left')
+var left = {};
+left.container = document.querySelector('.left-choice');
+
+// RIGHT
+left.cursor_signature_left = document.getElementById('cursor-signature-left');
 var selected = null, // Object of the element to be moved
 x_pos = 0, y_pos = 0, // Stores x & y coordinates of the mouse pointer
 x_elem = 0, y_elem = 0; // Stores top, left values (edge) of the element
@@ -92,10 +101,10 @@ function _drag_init(elem) {
   x_elem = x_pos - selected.offsetLeft;
 }
 // Will be called when user dragging an element
-var validation_left = document.querySelector('#validation-left');
-var validation_size = parseInt(window.getComputedStyle(validation_left).getPropertyValue("width").substring(2, -3));
+left.validation_left = document.querySelector('#validation-left');
+var validation_size = parseInt(window.getComputedStyle(left.validation_left).getPropertyValue("width").substring(2, -3));
 validation_size /= 6.5;
-var limit = validation_left.offsetLeft ;
+var limit = left.validation_left.offsetLeft ;
 function _move_elem(e) {
 
   x_pos = document.all ? window.event.clientX : e.pageX;
@@ -107,10 +116,10 @@ function _move_elem(e) {
       ratio = 0;
     } else if (ratio > limit) {
       ratio = limit + validation_size;
-      cursor_signature_left.style.backgroundColor = "green";
-      window.location.href = '{{app.request.basepath}}/story';
+      left.cursor_signature_left.style.backgroundColor = "green";
+      window.location.href = '{{app.request.basepath}}/left';
     } else if(ratio < 259){
-      cursor_signature_left.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
+      left.cursor_signature_left.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
     }
     selected.style.left = ratio + 'px';
   }
