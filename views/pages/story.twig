@@ -1,5 +1,147 @@
 {{include('partials/header.twig')}}
+<div class="hover-informations">
+  <!-- Item information-element : BEGIN -->
+  <div class="information-element">
+    <div class="circle-pointer">
+      <div class="circle-hover">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="information-panel">
+      <div class="title">Un regard éclatant</div>
+      <div class="description">Your wedding day is important, nobody needs to remind you of that. You are going to be the center of attention (at long last!) as all eyes will be on you and your groom. Even though your friends and family are there to cheer you on and celebrate the great day along with you, it can still be incredibly nerve wracking to have to stand in front of them all and try desperately to look your best.</div>
+      <div class="source">Source : Wikipedia.com</div>
+      <div class="aside-picture"><img src="{{app.request.basepath}}/src/images/images-story/emilia-clarke-small-1.png" alt=""></div>
+    </div>
+  </div>
+  <!-- Item information-element : END -->
+  <!-- Item information-element : BEGIN -->
+  <div class="information-element">
+    <div class="circle-pointer">
+      <div class="circle-hover">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="information-panel">
+      <div class="title">Des lèvres à croquer</div>
+      <div class="description">Your wedding day is important, nobody needs to remind you of that. You are going to be the center of attention (at long last!) as all eyes will be on you and your groom. Even though your friends and family are there to cheer you on and celebrate the great day along with you, it can still be incredibly nerve wracking to have to stand in front of them all and try desperately to look your best.</div>
+      <div class="source">Source : Wikipedia.com</div>
+      <div class="aside-picture"><img src="{{app.request.basepath}}/src/images/images-story/emilia-clarke-small-2.png" alt=""></div>
+    </div>
+  </div>
+  <!-- Item information-element : END -->
+  <!-- Item information-element : BEGIN -->
+  <div class="information-element">
+    <div class="circle-pointer">
+      <div class="circle-hover">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="information-panel">
+      <div class="title">Une chevelure divine</div>
+      <div class="description">Your wedding day is important, nobody needs to remind you of that. You are going to be the center of attention (at long last!) as all eyes will be on you and your groom. Even though your friends and family are there to cheer you on and celebrate the great day along with you, it can still be incredibly nerve wracking to have to stand in front of them all and try desperately to look your best.</div>
+      <div class="source">Source : Wikipedia.com</div>
+      <div class="aside-picture"><img src="{{app.request.basepath}}/src/images/images-story/emilia-clarke-eye.png" alt=""></div>
+    </div>
+  </div>
+  <!-- Item information-element : END -->
+</div>
+<div class="image-placeholder"></div>
+<div class="overlay"></div>
+<div id="panel" class="panel-controller">
+  <div id="panel-button" class="switcher"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt=""></div>
+  <div class="core-controller">
+    <div class="body-situation">
+      <img src="{{app.request.basepath}}/src/images/story/body.svg" alt="">
+    </div>
+    <div class="identity">
+      <div class="row">
+        <div class="data-item">
+          <h2>Nom du patient</h2>
+          <h3>Suong Kévin Tan</h3>
+        </div>
+        <div class="data-item">
+          <h2>Âge</h2>
+          <h3>21 ans</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="data-item">
+          <h2>Lieu d'habitation</h2>
+          <h3>Paris, France</h3>
+        </div>
+        <div class="data-item left">
+          <h2>Sexe</h2>
+          <h3>Masculin</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="data-item">
+          <h2>Votre progression ADN</h2>
+          <img src="{{app.request.basepath}}/src/images/story/adn.svg" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <div class="upgrades-status">
+      <div class="row">
+        <div class="data-item success">
+          <h2>Électrodes cervicales</h2>
+          <h3>Implanté</h3>
+        </div>
+        <div class="data-item locked">
+          <h2>Recherche d’amélioration</h2>
+          <h3>En cours</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="data-item failed">
+          <h2>Prothèses jambaire</h2>
+          <h3>Non implanté</h3>
+        </div>
+        <div class="data-item locked left">
+          <h2>Recherche d’amélioration</h2>
+          <h3>En cours</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="data-item locked">
+          <h2>Recherche d’amélioration</h2>
+          <h3>En cours</h3>
+        </div>
+        <div class="data-item locked left-2">
+          <h2>Recherche d’amélioration</h2>
+          <h3>En cours</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="audio-controller"></div>
 
-Story
+<script type="text/javascript">
+  var button_panel = document.querySelector('#panel-button');
+  var panel = document.querySelector('#panel');
+  var overlay = document.querySelector('.overlay');
+  button_panel.addEventListener("click",function(){
+    if (panel.classList.contains("active")) {
+      panel.classList.remove("active");
+      overlay.classList.remove("active");
+    } else {
+      panel.classList.add("active");
+      overlay.classList.add("active");
+    }
+  });
+  window.addEventListener("keydown",function(event){
+    if (event.which == 40 && panel.classList.contains("active")) {
+      panel.classList.remove("active");
+      overlay.classList.remove("active");
+    } else if (event.which == 38 && panel.classList.contains("active") == false){
+      panel.classList.add("active");
+      overlay.classList.add("active");
+    }
+  });
+
+</script>
 
 {{include('partials/footer.twig')}}
