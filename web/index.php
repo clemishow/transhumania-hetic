@@ -185,6 +185,29 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
 })
 ->bind('browse');
 
+// BROWSE
+$app->get('/statistics', function() use ($app, $fb, $facebook) {
+
+    $data = array();
+    $data['title_page'] = 'Statisques';
+    $data['page_class'] = 'statistics';
+
+    // GET USER DATA
+    $facebookUser = $facebook->getUserInfos($fb);
+    $data['user'] = $facebookUser;
+
+    // GET DATA ABOUT USER IN DB
+    $facebookID     = $data['user']['id'];
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $execute        = $prepare->execute();
+    $userDB         = $prepare->fetchAll();
+    $data['userDB'] = $userDB;
+
+    return $app['twig']->render('pages/statistics.twig', $data);
+
+})
+->bind('statistics');
+
 // LOGOUT
 $app->get('/logout', function() use($app) {
 
