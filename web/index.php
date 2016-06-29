@@ -56,6 +56,7 @@ $app->get('/', function() use ($app, $fb, $facebook) {
     $data['title_page'] = 'Transhumania';
     $data['page_class'] = 'home';
 
+    // GET USER DATA
     $facebookLogin = $facebook->getURL($fb);
     $data['loginUrl'] = $facebookLogin;
 
@@ -70,8 +71,55 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
     $data['title_page'] = 'Point de départ';
     $data['page_class'] = 'begin';
 
-    $facebookLogin = $facebook->getURL($fb);
-    $data['loginUrl'] = $facebookLogin;
+    // GET USER DATA
+    $facebookUser = $facebook->getUserInfos($fb);
+    $data['user'] = $facebookUser;
+
+    $date_birthday = array();
+    foreach ($facebookUser['birthday'] as $facebookInfo) {
+        $date_birthday[] = $facebookInfo;
+    }
+    $age = (2016 - substr($date_birthday['0'], 0, 4));
+
+    // CHECK EXIST
+    function checkExist($id, $app) {
+        $prepare = $app['db']->prepare('SELECT * FROM users WHERE facebookID = :facebookID');
+        $prepare->bindValue('facebookID',$id);
+        $execute = $prepare->execute();
+        $user    = $prepare->fetch();
+
+        if ($user)
+            return 1;
+        else
+            return 0;
+    }
+
+    if ($data['user']['gender'] == 'male') {
+        $data['user']['gender'] = 'Masculin';
+    } else {
+        $data['user']['gender'] = 'Feminin';
+    }
+
+    // CREATE ACCOUNT
+    $existUser = checkExist($data['user']['id'], $app);
+    if (!empty($data['user']) && $existUser == 0) {
+        $prepare = $app['db']->prepare('INSERT INTO users (facebookID,firstName,lastName,email,location,gender,age) VALUES (:facebookID,:firstName,:lastName,:email,:location,:gender,:age)');
+        $prepare->bindValue('facebookID',$data['user']['id']);
+        $prepare->bindValue('firstName',$data['user']['first_name']);
+        $prepare->bindValue('lastName',$data['user']['last_name']);
+        $prepare->bindValue('email',$data['user']['email']);
+        $prepare->bindValue('location',$data['user']['location']['name']);
+        $prepare->bindValue('gender',$data['user']['gender']);
+        $prepare->bindValue('age',$age);
+        $execute = $prepare->execute();
+    }
+
+    // GET DATA ABOUT USER IN DB
+    $facebookID     = $data['user']['id'];
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $execute        = $prepare->execute();
+    $userDB         = $prepare->fetchAll();
+    $data['userDB'] = $userDB;
 
 	return $app['twig']->render('pages/begin.twig', $data);
 })
@@ -84,8 +132,16 @@ $app->get('/story', function() use ($app, $fb, $facebook) {
     $data['title_page'] = 'L\'expérience';
     $data['page_class'] = 'story';
 
-    $facebookLogin = $facebook->getURL($fb);
-    $data['loginUrl'] = $facebookLogin;
+    // GET USER DATA FB
+    $facebookUser = $facebook->getUserInfos($fb);
+    $data['user'] = $facebookUser;
+
+    // GET DATA ABOUT USER IN DB
+    $facebookID     = $data['user']['id'];
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $execute        = $prepare->execute();
+    $userDB         = $prepare->fetch();
+    $data['userDB'] = $userDB;
 
 	return $app['twig']->render('pages/story.twig', $data);
 })
@@ -97,7 +153,8 @@ $app->get('/dilemma', function() use ($app, $fb, $facebook) {
 	$data = array();
     $data['title_page'] = 'Dilemme';
     $data['page_class'] = 'dilemma';
-
+    
+    // GET USER DATA
     $facebookLogin = $facebook->getURL($fb);
     $data['loginUrl'] = $facebookLogin;
 
@@ -116,34 +173,9 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
     $facebookUser = $facebook->getUserInfos($fb);
     $data['user'] = $facebookUser;
 
-    // CHECK EXIST
-    function checkExist($id, $app) {
-        $prepare = $app['db']->prepare('SELECT * FROM users WHERE facebookID = :facebookID');
-        $prepare->bindValue('facebookID',$id);
-        $execute = $prepare->execute();
-        $user    = $prepare->fetch();
-
-        if ($user)
-            return 1;
-        else
-            return 0;
-    }
-
-    // CREATE ACCOUNT
-    $existUser = checkExist($data['user']['id'], $app);
-    if (!empty($data['user']) && $existUser == 0) {
-        $prepare = $app['db']->prepare('INSERT INTO users (facebookID,firstName,lastName,email,location) VALUES (:facebookID,:firstName,:lastName,:email,:location)');
-        $prepare->bindValue('facebookID',$data['user']['id']);
-        $prepare->bindValue('firstName',$data['user']['first_name']);
-        $prepare->bindValue('lastName',$data['user']['last_name']);
-        $prepare->bindValue('email',$data['user']['email']);
-        $prepare->bindValue('location',$data['user']['location']['name']);
-        $execute = $prepare->execute();
-    }
-
     // GET DATA ABOUT USER IN DB
     $facebookID     = $data['user']['id'];
-    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID     = '$facebookID'");
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
     $execute        = $prepare->execute();
     $userDB         = $prepare->fetchAll();
     $data['userDB'] = $userDB;
@@ -152,6 +184,29 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
 
 })
 ->bind('browse');
+
+// BROWSE
+$app->get('/statistics', function() use ($app, $fb, $facebook) {
+
+    $data = array();
+    $data['title_page'] = 'Statisques';
+    $data['page_class'] = 'statistics';
+
+    // GET USER DATA
+    $facebookUser = $facebook->getUserInfos($fb);
+    $data['user'] = $facebookUser;
+
+    // GET DATA ABOUT USER IN DB
+    $facebookID     = $data['user']['id'];
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $execute        = $prepare->execute();
+    $userDB         = $prepare->fetchAll();
+    $data['userDB'] = $userDB;
+
+    return $app['twig']->render('pages/statistics.twig', $data);
+
+})
+->bind('statistics');
 
 // LOGOUT
 $app->get('/logout', function() use($app) {

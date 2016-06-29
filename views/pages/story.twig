@@ -58,21 +58,21 @@
       <div class="row">
         <div class="data-item">
           <h2>Nom du patient</h2>
-          <h3>Suong Kévin Tan</h3>
+          <h3>{{userDB.firstName}} {{userDB.lastName}}</h3>
         </div>
         <div class="data-item">
           <h2>Âge</h2>
-          <h3>21 ans</h3>
+          <h3>{{userDB.age}}</h3>
         </div>
       </div>
       <div class="row">
         <div class="data-item">
           <h2>Lieu d'habitation</h2>
-          <h3>Paris, France</h3>
+          <h3>{{userDB.location}}</h3>
         </div>
         <div class="data-item left">
           <h2>Sexe</h2>
-          <h3>Masculin</h3>
+          <h3>{{userDB.gender}}</h3>
         </div>
       </div>
       <div class="row">
@@ -118,33 +118,4 @@
   </div>
 </div>
 <div class="audio-controller"></div>
-
-<script type="text/javascript">
-  var button_panel = document.querySelector('#panel-button');
-  var panel = document.querySelector('#panel');
-  var overlay = document.querySelector('.overlay');
-  button_panel.addEventListener("click",function(){
-    if (panel.classList.contains("active")) {
-      panel.classList.remove("active");
-      overlay.classList.remove("active");
-    } else {
-      panel.classList.add("active");
-      overlay.classList.add("active");
-    }
-  });
-  window.addEventListener("keydown",function(event){
-    if (event.which == 40 && panel.classList.contains("active")) {
-      panel.classList.remove("active");
-      overlay.classList.remove("active");
-    } else if (event.which == 38 && panel.classList.contains("active") == false){
-      panel.classList.add("active");
-      overlay.classList.add("active");
-    } else if (event.which == 32){
-      window.location.href = '{{app.request.basepath}}/dilemma';
-    }
-  });
-
-
-</script>
-
 {{include('partials/footer.twig')}}
