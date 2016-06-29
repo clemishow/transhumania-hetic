@@ -86,6 +86,8 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
 
     if (!isset($data['user']['location']['name'])) {
         $location = 'Non communiqué';
+    } else {
+       $location = $data['user']['location']['name'];
     }
 
     // CHECK EXIST
