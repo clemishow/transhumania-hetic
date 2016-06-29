@@ -18,7 +18,7 @@ footer {
 
 .image-placeholder{
   position: absolute;
-  background-image: url("../images/images-story/emilia-clarke.jpeg");
+  background-image: url("../images/images-story/emilia-clarke.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -43,16 +43,16 @@ footer {
   position: absolute;
   width: 30rem;;
   &:nth-child(1){
-    top: 9vw;
-    left: 55vw;
+    top: 6vw;
+    left: 65vw;
   }
   &:nth-child(2){
-    top: 20vw;
-    left: 46vw;
+    top: 12vw;
+    left: 60vw;
   }
   &:nth-child(3){
-    top: 28vw;
-    left: 36vw;
+    top: 16vw;
+    left: 55vw;
   }
 }
 .circle-pointer{

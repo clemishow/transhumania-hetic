@@ -4,13 +4,13 @@ if ($('body').hasClass('begin')) {
     if (count == 0) {
         window.location.href = "http://localhost:9999/transhumania-hetic/web/begin";
         localStorage.setItem('count', 1);
-    } 
+    }
 } else {
     localStorage.setItem('count', 0);
 }
 
 
-// STORY PAGE 
+// STORY PAGE
 var button_panel = document.querySelector('#panel-button');
 var panel = document.querySelector('#panel');
 var overlay = document.querySelector('.overlay');
@@ -32,10 +32,3 @@ if (event.which == 40 && panel.classList.contains("active")) {
   overlay.classList.add("active");
 }
 });
-
-
-
-
-
-
-

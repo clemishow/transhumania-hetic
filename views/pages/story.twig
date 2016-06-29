@@ -118,4 +118,13 @@
   </div>
 </div>
 <div class="audio-controller"></div>
+
+<script type="text/javascript">
+window.addEventListener("keydown",function(event){
+  if (event.which == 32){
+    window.location.href = '{{app.request.basepath}}/dilemma';
+  }
+});
+</script>
+
 {{include('partials/footer.twig')}}
