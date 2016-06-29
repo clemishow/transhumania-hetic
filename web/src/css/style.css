@@ -728,59 +728,44 @@ footer {
   margin: 0 auto;
   margin-top: 30px;
   overflow: hidden; }
-
-.player video {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  overflow: hidden; }
-
-.player video::-webkit-media-controls {
-  display: none !important; }
-
-.player video::-moz-media-controls {
-  display: none !important; }
-
-.player video::-o-media-controls {
-  display: none !important; }
-
-.player video::-ms-media-controls {
-  display: none !important; }
-
-/**
-*** CONTROLS
-***** CONTAINER  
-*/
-.player .controls {
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  bottom: 36px; }
-
-/**
-*** PROGRESS BAR
-*/
-.player .seek-bar {
-  width: 100vw;
-  height: 5px;
-  background: red;
-  position: absolute;
-  bottom: 0; }
-
-.player .progress-bar {
-  width: 100%;
-  height: 5px;
-  background: blue;
-  -webkit-transition: transfrom 100ms;
-  -moz-transition: transfrom 100ms;
-  -ms-transition: transfrom 100ms;
-  -o-transition: transfrom 100ms;
-  transition: transfrom 100ms;
-  -webkit-transform-origin: 0;
-  -moz-transform-origin: 0;
-  -ms-transform-origin: 0;
-  -o-transform-origin: 0;
-  transform-origin: 0; }
+  .player video {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden; }
+    .player video::-webkit-media-controls {
+      display: none !important; }
+    .player video::-moz-media-controls {
+      display: none !important; }
+    .player video::-o-media-controls {
+      display: none !important; }
+    .player video::-ms-media-controls {
+      display: none !important; }
+  .player .controls {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 36px; }
+    .player .controls .seek-bar {
+      width: 100vw;
+      height: 5px;
+      background: red;
+      position: absolute;
+      bottom: 0; }
+    .player .controls .progress-bar {
+      width: 100%;
+      height: 5px;
+      background: blue;
+      -webkit-transition: transfrom 100ms;
+      -moz-transition: transfrom 100ms;
+      -ms-transition: transfrom 100ms;
+      -o-transition: transfrom 100ms;
+      transition: transfrom 100ms;
+      -webkit-transform-origin: 0;
+      -moz-transform-origin: 0;
+      -ms-transform-origin: 0;
+      -o-transform-origin: 0;
+      transform-origin: 0; }
 
 /*
 *** GENERAL
