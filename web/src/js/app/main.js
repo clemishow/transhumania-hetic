@@ -32,12 +32,41 @@ if (event.which == 40 && panel.classList.contains("active")) {
 }
 });
 
+var count_fullScreen = 0;
 function FullScreenIn() {
-  if (screenfull.enabled) {
-      screenfull.request();
-  } else  {
-      screenfull.exit();
-      console.log('disable');
+  document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+
+  function requestFullscreen(document) {
+      if (document.requestFullscreen) {
+          document.requestFullscreen();
+      } else if (document.mozRequestFullScreen) {
+          document.mozRequestFullScreen();
+      } else if (document.webkitRequestFullScreen) {
+          document.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+  }
+
+  function cancelFullscreen(document) {
+      if (document.cancelFullScreen) {
+        document.cancelFullScreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitCancelFullScreen) {
+        document.webkitCancelFullScreen();
+      }
+  }
+  console.log(count_fullScreen);
+  if (count_fullScreen == 0) {
+        requestFullscreen(document.documentElement);
+        setTimeout(function(){
+          count_fullScreen = 1;
+          console.log(count_fullScreen);
+        },300);
+  } else if (count_fullScreen == 1) {
+        cancelFullscreen(document);
+        setTimeout(function(){
+          count_fullScreen = 0;
+        },300);
   }
 }
 
