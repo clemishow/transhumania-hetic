@@ -11,7 +11,8 @@ footer{
   a{
     opacity: .5;
     color: white;
-    font-family: "Abrade-Thin",sans-serif;
+    font-family: "Abrade",sans-serif;
+    font-weight: 300;
     font-size: .7rem;
     text-decoration: none;
     padding: 1rem 1.5rem;
@@ -20,7 +21,8 @@ footer{
       background-color: white;
       opacity: .7;
       color: #282c34;
-      font-family: "Abrade-Thin",sans-serif;
+      font-family: "Abrade",sans-serif;
+      font-weight: 300;
       svg{
         fill: #181818;
       }
@@ -29,7 +31,8 @@ footer{
       background-color: transparent;
       opacity: .7;
       color: #282c34;
-      font-family: "Abrade-Thin",sans-serif;
+      font-family: "Abrade",sans-serif;
+      font-weight: 300;
     }
   }
 }

@@ -27,6 +27,7 @@
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Rubik:400,700,500,300|Muli:400,300);
 .login {
   background-color: #181818;
 }
@@ -57,13 +58,13 @@
 .main-core p {
   width: 65vw;
   color: white;
-  font-family: "Abrade-Light",sans-serif;
+  font-family: "Abrade",sans-serif;
   margin: auto;
   padding-bottom: 4rem;
 }
 
 .facebook-button {
-  font-family: "Abrade-Light",sans-serif;
+  font-family: "Abrade",sans-serif;
   border: 2px solid rgba(255, 255, 255, 0.5);
   margin: auto;
   padding: 1rem 3rem;
@@ -323,11 +324,13 @@
 
 .dilemma-panel h1 {
   text-transform: uppercase;
-  font-family: "Abrade-Medium",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 400;
 }
 
 .dilemma-panel h2 {
-  font-family: "Abrade-Light",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
   font-size: 1rem;
   line-height: 1.3;
 }
@@ -494,7 +497,8 @@ footer {
 footer a {
   opacity: .5;
   color: white;
-  font-family: "Abrade-Thin",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
   font-size: .7rem;
   text-decoration: none;
   padding: 1rem 1.5rem;
@@ -505,7 +509,8 @@ footer a:hover {
   background-color: white;
   opacity: .7;
   color: #282c34;
-  font-family: "Abrade-Thin",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
 }
 
 footer a:hover svg {
@@ -516,7 +521,8 @@ footer a:active {
   background-color: transparent;
   opacity: .7;
   color: #282c34;
-  font-family: "Abrade-Thin",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
 }
 
 .line-separator {
@@ -552,6 +558,7 @@ footer a:active {
 }
 
 .story {
+  background-color: #181818;
   overflow: hidden;
   cursor: default;
   background-color: black;
@@ -602,7 +609,7 @@ footer {
 }
 
 .title-wrapper p {
-  font-family: "Abrade-Book";
+  font-family: "Abrade",sans-serif;
   margin: 0;
   padding: 0;
   padding-bottom: .3rem;
@@ -616,7 +623,8 @@ footer {
 }
 
 .title-wrapper h1 {
-  font-family: "Abrade-Light";
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
   margin: 0;
   margin-top: .5rem;
   padding: 0;
@@ -744,6 +752,7 @@ footer {
 }
 
 .information-panel .title {
+  font-family: "Abrade",sans-serif;
   position: absolute;
   background-color: white;
   opacity: 0;
@@ -761,13 +770,14 @@ footer {
 
 .information-panel .description {
   color: #fefefe;
-  font-family: "Abrade-Light",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
   line-height: 1.4;
   font-size: .8rem;
 }
 
 .information-panel .source {
-  font-family: "Abrade-Book",sans-serif;
+  font-family: "Abrade",sans-serif;
   font-size: .8rem;
   margin-top: .5rem;
 }
@@ -825,14 +835,16 @@ footer {
 
 .panel-controller .identity .row .data-item h2 {
   color: white;
-  font-family: "Abrade-Medium",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 400;
   font-size: .8rem;
   margin: 0;
 }
 
 .panel-controller .identity .row .data-item h3 {
   color: #59d8e6;
-  font-family: "Abrade-Light",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
   font-size: 1.5rem;
   margin: 0;
   margin-top: .3rem;
@@ -880,14 +892,16 @@ footer {
 
 .upgrades-status .row .data-item h2 {
   color: white;
-  font-family: "Abrade-Medium",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 400;
   font-size: .8rem;
   margin: 0;
 }
 
 .upgrades-status .row .data-item h3 {
   color: #59d8e6;
-  font-family: "Abrade-Light",sans-serif;
+  font-family: "Abrade",sans-serif;
+  font-weight: 300;
   font-size: 1.5rem;
   margin: 0;
   margin-top: .3rem;
@@ -970,6 +984,19 @@ footer {
   }
 }
 
+@media only screen and (max-width: 1280px) {
+  .panel-controller {
+    transform: translateX(0) translateY(67vh) translateZ(0);
+  }
+  .hover-informations {
+    top: 2.5rem;
+    left: 0rem;
+  }
+  .information-panel {
+    left: 2.5rem;
+  }
+}
+
 /**
 *** PLAYER
 */
@@ -1006,7 +1033,7 @@ footer {
 
 /**
 *** CONTROLS
-***** CONTAINER
+***** CONTAINER  
 */
 .player .controls {
   width: 100%;
@@ -1044,8 +1071,8 @@ footer {
   box-shadow: 0px -100px 20px -10px rgba(0, 0, 0, 0.4) inset;
 }
 
-/**
-*** BUTTONS
+/** 
+*** BUTTONS 
 */
 /* PLAY */
 .player .button-play {
@@ -1275,7 +1302,7 @@ footer {
   font-size: 1em;
 }
 
-/*
+/* 
 * MEDIA QUERIES FOR RESPONSIVE
 ***
 */
@@ -1357,8 +1384,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (max-width: 1280px) {
   .information-panel {
-    top: 3.5rem;
-    left: 2.5rem;
+    top: 2.5rem;
     padding: 3rem 3.5rem 2rem 1.5rem;
   }
   .information-panel .title {
@@ -1369,7 +1395,8 @@ h1, h2, h3, h4, h5, h6 {
   }
   .hover-informations {
     position: absolute;
-    top: 2.5rem;
+    top: 7.5rem;
+    left: 2rem;
   }
   .panel-controller {
     transform: translateX(0) translateY(67vh) translateZ(0);
@@ -1403,4 +1430,16 @@ h1, h2, h3, h4, h5, h6 {
 .information-panel {
   background-color: #4a90e2;
   padding: 3rem 2.5rem 2rem 1.5rem;
+}
+
+.main-core p {
+  font-family: "Abrade", sans-serif;
+}
+
+@media only screen and (height: 900px) {
+  .hover-informations {
+    position: absolute;
+    top: 5.45rem;
+    left: 0rem;
+  }
 }
