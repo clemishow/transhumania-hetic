@@ -75,16 +75,18 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
     $facebookUser = $facebook->getUserInfos($fb);
     $data['user'] = $facebookUser;
 
-
-    if (isset($date_birthday)) {
-        $date_birthday = '1990';
-    }
-
     $date_birthday = array();
-    foreach ($facebookUser['birthday'] as $facebookInfo) {
-        $date_birthday[] = $facebookInfo;
+    if (isset($facebookUser['birthday'])) {
+        foreach ($facebookUser['birthday'] as $facebookInfo) {
+            $date_birthday[] = $facebookInfo;
+        } $age = (2016 - substr($date_birthday['0'], 0, 4));
+    } else {
+        $age = '25';
     }
-    $age = (2016 - substr($date_birthday['0'], 0, 4));
+
+    if (!isset($data['user']['location']['name'])) {
+        $location = 'Non communiqué';
+    }
 
     // CHECK EXIST
     function checkExist($id, $app) {
@@ -105,10 +107,6 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
         $data['user']['gender'] = 'Feminin';
     }
 
-    if (isset($data['user']['location']['name'])) {
-        $data['user']['location']['name'] = 'Non communiqué';
-    }
-
     // CREATE ACCOUNT
     $existUser = checkExist($data['user']['id'], $app);
     if (!empty($data['user']) && $existUser == 0) {
@@ -117,7 +115,7 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
         $prepare->bindValue('firstName',$data['user']['first_name']);
         $prepare->bindValue('lastName',$data['user']['last_name']);
         $prepare->bindValue('email',$data['user']['email']);
-        $prepare->bindValue('location',$data['user']['location']['name']);
+        $prepare->bindValue('location',$location);
         $prepare->bindValue('gender',$data['user']['gender']);
         $prepare->bindValue('age',$age);
         $execute = $prepare->execute();
@@ -162,7 +160,7 @@ $app->get('/dilemma', function() use ($app, $fb, $facebook) {
 	$data = array();
     $data['title_page'] = 'Dilemme';
     $data['page_class'] = 'dilemma';
-    
+
     // GET USER DATA
     $facebookLogin = $facebook->getURL($fb);
     $data['loginUrl'] = $facebookLogin;
