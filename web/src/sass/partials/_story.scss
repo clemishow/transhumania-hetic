@@ -10,6 +10,10 @@
 .story {
   animation: fadeIn 1s ease-in-out 0s normal running 1 forwards;
 }
+footer {
+  animation: fadeIn 0s ease-in-out 0s normal running 1 forwards;
+}
+
 
 
 .image-placeholder{
@@ -83,6 +87,7 @@
     }
   }
   &:hover{
+    background-color: #6db0ff;
     .circle-hover{
       opacity: 1;
       transform: translateY(-1px) translateX(-1px) scale(1.5);
@@ -104,7 +109,6 @@
     transform: translateX(5px) translateY(5px) translateZ(0);
   }
 }
-
 
 .information-panel{
   position: absolute;
