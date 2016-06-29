@@ -32,7 +32,6 @@ if (event.which == 40 && panel.classList.contains("active")) {
 }
 });
 
-
 // FULLSCREEN NATIF
 var count_fullScreen = 0;
 function FullScreenIn() {
@@ -73,7 +72,7 @@ function FullScreenIn() {
 }
 
 
-function player() {
+function player(video_name) {
   var  player        = {};
 
   // GENERAL
@@ -86,6 +85,8 @@ function player() {
   player.progress_bar            = player.container.querySelector('.progress-bar');
   // BUTTON
   player.volume                  = document.querySelector('.volume-btn');
+  var video_name = 'src/medias/' + video_name;
+  player.video.src = video_name;
 
 
   player.video.volume = 0;
