@@ -34,7 +34,7 @@
 
 			$helper = $fb->getRedirectLoginHelper();
 		    $permissions = ['email', 'public_profile', 'user_birthday', 'user_location'];
-		    $loginUrl = $helper->getReRequestUrl(' '. URL .'/browse', $permissions);
+		    $loginUrl = $helper->getReRequestUrl(' '. URL .'/begin', $permissions);
 
 		    return $loginUrl;
 
@@ -81,9 +81,9 @@
 		    try {
 		      // PUT WHAT TO GET ON THE USER
 		    if (isset($_COOKIE['fbToken'])) {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location', $_COOKIE['fbToken']);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,gender', $_COOKIE['fbToken']);
 		    } else {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location', $longLivedAccessToken);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,gender', $longLivedAccessToken);
 		    }
 		    } catch(Facebook\Exceptions\FacebookResponseException $e) {
 		      echo 'Graph erreur : ' . $e->getMessage();

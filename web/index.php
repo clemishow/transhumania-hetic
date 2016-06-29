@@ -56,6 +56,7 @@ $app->get('/', function() use ($app, $fb, $facebook) {
     $data['title_page'] = 'Transhumania';
     $data['page_class'] = 'home';
 
+    // GET USER DATA
     $facebookLogin = $facebook->getURL($fb);
     $data['loginUrl'] = $facebookLogin;
 
@@ -69,48 +70,6 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
 	$data = array();
     $data['title_page'] = 'Point de départ';
     $data['page_class'] = 'begin';
-
-    $facebookLogin = $facebook->getURL($fb);
-    $data['loginUrl'] = $facebookLogin;
-
-	return $app['twig']->render('pages/begin.twig', $data);
-})
-->bind('begin');
-
-// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
-$app->get('/story', function() use ($app, $fb, $facebook) {
-
-	$data = array();
-    $data['title_page'] = 'L\'expérience';
-    $data['page_class'] = 'story';
-
-    $facebookLogin = $facebook->getURL($fb);
-    $data['loginUrl'] = $facebookLogin;
-
-	return $app['twig']->render('pages/story.twig', $data);
-})
-->bind('story');
-
-// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
-$app->get('/dilemma', function() use ($app, $fb, $facebook) {
-
-	$data = array();
-    $data['title_page'] = 'Dilemme';
-    $data['page_class'] = 'dilemma';
-
-    $facebookLogin = $facebook->getURL($fb);
-    $data['loginUrl'] = $facebookLogin;
-
-	return $app['twig']->render('pages/dilemma.twig', $data);
-})
-->bind('dilemma');
-
-// BROWSE
-$app->get('/browse', function() use ($app, $fb, $facebook) {
-
-	$data = array();
-    $data['title_page'] = 'Browse';
-    $data['page_class'] = 'browse';
 
     // GET USER DATA
     $facebookUser = $facebook->getUserInfos($fb);
@@ -129,21 +88,87 @@ $app->get('/browse', function() use ($app, $fb, $facebook) {
             return 0;
     }
 
+    if ($data['user']['gender'] == 'male') {
+        $data['user']['gender'] = 'Masculin';
+    } else {
+        $data['user']['gender'] = 'Feminin';
+    }
+
     // CREATE ACCOUNT
     $existUser = checkExist($data['user']['id'], $app);
     if (!empty($data['user']) && $existUser == 0) {
-        $prepare = $app['db']->prepare('INSERT INTO users (facebookID,firstName,lastName,email,location) VALUES (:facebookID,:firstName,:lastName,:email,:location)');
+        $prepare = $app['db']->prepare('INSERT INTO users (facebookID,firstName,lastName,email,location,gender) VALUES (:facebookID,:firstName,:lastName,:email,:location,:gender)');
         $prepare->bindValue('facebookID',$data['user']['id']);
         $prepare->bindValue('firstName',$data['user']['first_name']);
         $prepare->bindValue('lastName',$data['user']['last_name']);
         $prepare->bindValue('email',$data['user']['email']);
         $prepare->bindValue('location',$data['user']['location']['name']);
+        $prepare->bindValue('gender',$data['user']['gender']);
         $execute = $prepare->execute();
     }
 
     // GET DATA ABOUT USER IN DB
     $facebookID     = $data['user']['id'];
-    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID     = '$facebookID'");
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $execute        = $prepare->execute();
+    $userDB         = $prepare->fetchAll();
+    $data['userDB'] = $userDB;
+
+	return $app['twig']->render('pages/begin.twig', $data);
+})
+->bind('begin');
+
+// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
+$app->get('/story', function() use ($app, $fb, $facebook) {
+
+	$data = array();
+    $data['title_page'] = 'L\'expérience';
+    $data['page_class'] = 'story';
+
+    // GET USER DATA FB
+    $facebookUser = $facebook->getUserInfos($fb);
+    $data['user'] = $facebookUser;
+
+    // GET DATA ABOUT USER IN DB
+    $facebookID     = $data['user']['id'];
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
+    $execute        = $prepare->execute();
+    $userDB         = $prepare->fetch();
+    $data['userDB'] = $userDB;
+
+	return $app['twig']->render('pages/story.twig', $data);
+})
+->bind('story');
+
+// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
+$app->get('/dilemma', function() use ($app, $fb, $facebook) {
+
+	$data = array();
+    $data['title_page'] = 'Dilemme';
+    $data['page_class'] = 'dilemma';
+    
+    // GET USER DATA
+    $facebookLogin = $facebook->getURL($fb);
+    $data['loginUrl'] = $facebookLogin;
+
+	return $app['twig']->render('pages/dilemma.twig', $data);
+})
+->bind('dilemma');
+
+// BROWSE
+$app->get('/browse', function() use ($app, $fb, $facebook) {
+
+	$data = array();
+    $data['title_page'] = 'Browse';
+    $data['page_class'] = 'browse';
+
+    // GET USER DATA
+    $facebookUser = $facebook->getUserInfos($fb);
+    $data['user'] = $facebookUser;
+
+    // GET DATA ABOUT USER IN DB
+    $facebookID     = $data['user']['id'];
+    $prepare        = $app['db']->prepare("SELECT * FROM users WHERE facebookID = '$facebookID'");
     $execute        = $prepare->execute();
     $userDB         = $prepare->fetchAll();
     $data['userDB'] = $userDB;
