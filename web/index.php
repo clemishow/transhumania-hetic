@@ -75,6 +75,12 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
     $facebookUser = $facebook->getUserInfos($fb);
     $data['user'] = $facebookUser;
 
+    $date_birthday = array();
+    foreach ($facebookUser['birthday'] as $facebookInfo) {
+        $date_birthday[] = $facebookInfo;
+    }
+    $age = (2016 - substr($date_birthday['0'], 0, 4));
+
     // CHECK EXIST
     function checkExist($id, $app) {
         $prepare = $app['db']->prepare('SELECT * FROM users WHERE facebookID = :facebookID');
@@ -97,13 +103,14 @@ $app->get('/begin', function() use ($app, $fb, $facebook) {
     // CREATE ACCOUNT
     $existUser = checkExist($data['user']['id'], $app);
     if (!empty($data['user']) && $existUser == 0) {
-        $prepare = $app['db']->prepare('INSERT INTO users (facebookID,firstName,lastName,email,location,gender) VALUES (:facebookID,:firstName,:lastName,:email,:location,:gender)');
+        $prepare = $app['db']->prepare('INSERT INTO users (facebookID,firstName,lastName,email,location,gender,age) VALUES (:facebookID,:firstName,:lastName,:email,:location,:gender,:age)');
         $prepare->bindValue('facebookID',$data['user']['id']);
         $prepare->bindValue('firstName',$data['user']['first_name']);
         $prepare->bindValue('lastName',$data['user']['last_name']);
         $prepare->bindValue('email',$data['user']['email']);
         $prepare->bindValue('location',$data['user']['location']['name']);
         $prepare->bindValue('gender',$data['user']['gender']);
+        $prepare->bindValue('age',$age);
         $execute = $prepare->execute();
     }
 

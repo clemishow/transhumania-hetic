@@ -81,9 +81,9 @@
 		    try {
 		      // PUT WHAT TO GET ON THE USER
 		    if (isset($_COOKIE['fbToken'])) {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,gender', $_COOKIE['fbToken']);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,gender,birthday', $_COOKIE['fbToken']);
 		    } else {
-		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,gender', $longLivedAccessToken);
+		        $response = $fb->get('/me?fields=id,name,email,first_name,last_name,picture.width(500),location,gender,birthday', $longLivedAccessToken);
 		    }
 		    } catch(Facebook\Exceptions\FacebookResponseException $e) {
 		      echo 'Graph erreur : ' . $e->getMessage();
