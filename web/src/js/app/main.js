@@ -32,4 +32,8 @@ if (event.which == 40 && panel.classList.contains("active")) {
 }
 });
 
-
+function FullScreenIn() {
+  if (screenfull.enabled) {
+      screenfull.request();
+  }
+}
