@@ -2,53 +2,6 @@
 
 <div class="block-page"></div>
 
-<div class="hover-informations">
-  <!-- Item information-element : BEGIN -->
-  <div class="information-element">
-    <div class="circle-pointer">
-      <div class="circle-hover">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div class="information-panel">
-      <div class="title">Un regard éclatant</div>
-      <div class="description">Your wedding day is important, nobody needs to remind you of that. You are going to be the center of attention (at long last!) as all eyes will be on you and your groom. Even though your friends and family are there to cheer you on and celebrate the great day along with you, it can still be incredibly nerve wracking to have to stand in front of them all and try desperately to look your best.</div>
-      <div class="source">Source : Wikipedia.com</div>
-      <div class="aside-picture"><img src="{{app.request.basepath}}/src/images/images-story/emilia-clarke-small-1.png" alt=""></div>
-    </div>
-  </div>
-  <!-- Item information-element : END -->
-  <!-- Item information-element : BEGIN -->
-  <div class="information-element">
-    <div class="circle-pointer">
-      <div class="circle-hover">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div class="information-panel">
-      <div class="title">Des lèvres à croquer</div>
-      <div class="description">Your wedding day is important, nobody needs to remind you of that. You are going to be the center of attention (at long last!) as all eyes will be on you and your groom. Even though your friends and family are there to cheer you on and celebrate the great day along with you, it can still be incredibly nerve wracking to have to stand in front of them all and try desperately to look your best.</div>
-      <div class="source">Source : Wikipedia.com</div>
-      <div class="aside-picture"><img src="{{app.request.basepath}}/src/images/images-story/emilia-clarke-small-2.png" alt=""></div>
-    </div>
-  </div>
-  <!-- Item information-element : END -->
-  <!-- Item information-element : BEGIN -->
-  <div class="information-element">
-    <div class="circle-pointer">
-      <div class="circle-hover">
-        <div class="line left"></div>
-      </div>
-    </div>
-    <div class="information-panel left">
-      <div class="title">Une chevelure divine</div>
-      <div class="description">Your wedding day is important, nobody needs to remind you of that. You are going to be the center of attention (at long last!) as all eyes will be on you and your groom. Even though your friends and family are there to cheer you on and celebrate the great day along with you, it can still be incredibly nerve wracking to have to stand in front of them all and try desperately to look your best.</div>
-      <div class="source">Source : Wikipedia.com</div>
-      <div class="aside-picture"><img src="{{app.request.basepath}}/src/images/images-story/emilia-clarke-eye.png" alt=""></div>
-    </div>
-  </div>
-  <!-- Item information-element : END -->
-</div>
 <div class="image-placeholder"></div>
 <div class="overlay"></div>
 <div id="panel" class="panel-controller">
@@ -124,6 +77,23 @@
 
 <script type="text/javascript">
 
+/*
+*** INIT 
+*/
+
+var block_page = document.querySelector('.block-page');
+    var request = new XMLHttpRequest();
+    request.open('GET', '../views/pages/info_01.twig', true);
+    request.onreadystatechange = function() {
+        if(this.readyState == 4) {
+            block_page.innerHTML = this.responseText;
+            // TRIGGER FUNCTION SWIPE
+            var left = new onSwipeValid("left","browse");
+            var right = new onSwipeValid("right","try");
+        }
+    }
+    request.send();
+    request = null;
 
 /*
 *** SWIPE
@@ -219,6 +189,14 @@ window.addEventListener("keydown",function(event){
     request = null;
   }
 });
+
+
+function timeLine() {
+
+}
+
+
+
 </script>
 
 {{include('partials/footer.twig')}}
