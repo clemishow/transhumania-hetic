@@ -111,9 +111,28 @@ function player() {
     }
   }
 
-  player.volume.addEventListener('click', function(){
+  // BTN VOLUME
+  player.volume.addEventListener('click', function() {
     volume();
   });
+
+  /**
+  *** SEEK BAR
+  */
+  window.setInterval(function(){
+    var progress_ratio      = player.video.currentTime / player.video.duration,
+      progress_ratio_percent  = progress_ratio * 100;
+
+    // PROGRESS BAR 
+    player.progress_bar.style.webkitTransform = 'scaleX(' + progress_ratio + ')';
+    player.progress_bar.style.mozTransform = 'scaleX(' + progress_ratio + ')';
+    player.progress_bar.style.msTransform = 'scaleX(' + progress_ratio + ')';
+    player.progress_bar.style.oTransform = 'scaleX(' + progress_ratio + ')';
+    player.progress_bar.style.transform = 'scaleX(' + progress_ratio + ')';
+
+    // CURSOR 
+      player.cursor_bar.style.left = progress_ratio_percent + '%';
+  },50);
 
 }
 

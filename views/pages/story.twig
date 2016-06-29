@@ -88,7 +88,6 @@ function page_ajax(page) {
     request.onreadystatechange = function() {
         if(this.readyState == 4) {
             block_page.innerHTML = this.responseText;
-            player();
         }
     }
     request.send();
@@ -127,7 +126,7 @@ window.addEventListener("keydown",function(event) {
 *** INIT 
 */
 
-page_ajax('video_intro');
+page_ajax('info_01');
 
 
 /*

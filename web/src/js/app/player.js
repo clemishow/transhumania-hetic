@@ -287,9 +287,6 @@ window.setInterval(function(){
 
 	// CURSOR 
     player.cursor_bar.style.left = progress_ratio_percent + '%';
-
-
-
 },50);
 
 // CLICK ON PROGRESS BAR
