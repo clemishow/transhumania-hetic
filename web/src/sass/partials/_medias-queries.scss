@@ -1,12 +1,71 @@
 
 /*
-*** SIZE 992 
+*** SIZE 992
 */
 
 @media only screen and (max-width: 992px) {
 	nav .brand-logo {
-	    left: 48% !important;
-	    transform: translateX(-48%) !important;
+		left: 48% !important;
+		transform: translateX(-48%) !important;
 	}
 }
 
+@media only screen and (max-width: 1280px) {
+	.information-panel{
+		top: 2.5rem;
+		padding: 3rem 3.5rem 2rem 1.5rem;
+		.title{
+			font-size: 1.2rem;
+		}
+		.description{
+			line-height: 1.6;
+		}
+		.photo-aside{
+		}
+	}
+	.hover-informations{
+		position: absolute;
+		top: 7.5rem;
+		left: 2rem;
+	}
+	.panel-controller{
+		transform: translateX(0) translateY(67vh) translateZ(0);
+	}
+	.core-controller{
+		margin-left: 25vw
+	}
+	.separator{
+		display: none;
+	}
+	.data-item{
+		margin: 0;
+	}
+	.identity{
+		margin-left: 9vw;
+	}
+	.upgrades-status{
+		margin-left: 9vw;
+	}
+	.body-situation{
+		position: absolute;
+		left: 17vw;
+		width: 10rem;
+		img{
+			top: 10rem;
+			width: 100%;
+		}
+	}
+}
+
+
+
+.information-panel {
+}
+
+
+
+
+.information-panel {
+	background-color: #4a90e2;
+	padding: 3rem 2.5rem 2rem 1.5rem;
+}
