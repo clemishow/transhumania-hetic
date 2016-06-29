@@ -139,8 +139,11 @@
     } else if (event.which == 38 && panel.classList.contains("active") == false){
       panel.classList.add("active");
       overlay.classList.add("active");
+    } else if (event.which == 32){
+      window.location.href = '{{app.request.basepath}}/dilemma';
     }
   });
+
 
 </script>
 

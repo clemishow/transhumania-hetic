@@ -1,5 +1,132 @@
 {{include('partials/header.twig')}}
 
-Dilemma
+<div class="dilemma-panel">
+  <div class="left-choice">
+    <div class="text">
+      <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus tempore, labore! Officiis, minus necessitatibus repellat dolores, eos, aliquam, est eius quam voluptatibus molestiae nisi eum vel saepe dolorem nobis temporibus.</h2>
+      <h1>Friendzoner Émilia</h1>
+      <div class="signature">
+        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div id="cursor-signature-left" class="cursor"></div>
+        <div class="line"></div>
+        <div id="validation-left" class="validation"></div>
+      </div>
+    </div>
+  </div>
+  <div class="right-choice">
+    <div class="text">
+      <h1>Épouser Émilia</h1>
+      <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus tempore, labore! Officiis, minus necessitatibus repellat dolores, eos, aliquam, est eius quam voluptatibus molestiae nisi eum vel saepe dolorem nobis temporibus.</h2>
+      <div class="signature">
+        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div class="arrow"><img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite"></div>
+        <div id="cursor-signature-right" class="cursor"></div>
+        <div class="line"></div>
+        <div id="validation-right" class="validation"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="image-placeholder"></div>
+
+<script type="text/javascript">
+
+var cursor_signature_right = document.getElementById('cursor-signature-right')
+var selected = null, // Object of the element to be moved
+x_pos = 0, y_pos = 0, // Stores x & y coordinates of the mouse pointer
+x_elem = 0, y_elem = 0; // Stores top, left values (edge) of the element
+// Will be called when user starts dragging an element
+function _drag_init(elem) {
+  // Store the object of the element which needs to be moved
+  selected = elem;
+  x_elem = x_pos - selected.offsetLeft;
+}
+// Will be called when user dragging an element
+var validation_right = document.querySelector('#validation-right');
+var validation_size = parseInt(window.getComputedStyle(validation_right).getPropertyValue("width").substring(2, -3));
+validation_size /= 6.5;
+var limit = validation_right.offsetLeft ;
+function _move_elem(e) {
+
+  x_pos = document.all ? window.event.clientX : e.pageX;
+  if (selected !== null) {
+    var ratio = x_pos - x_elem;
+    console.log(x_pos - x_elem);
+    console.log(ratio);
+    if (ratio < 0) {
+      ratio = 0;
+    } else if (ratio > limit) {
+      ratio = limit + validation_size;
+      cursor_signature_right.style.backgroundColor = "green";
+      window.location.href = '{{app.request.basepath}}/begin';
+    } else if(ratio < 259){
+      cursor_signature_right.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
+    }
+    selected.style.left = ratio + 'px';
+  }
+}
+// Destroy the object when we are done
+function _destroy() {
+  selected = null;
+}
+// Bind the functions...
+document.getElementById('cursor-signature-right').onmousedown = function () {
+  _drag_init(this);
+  return false;
+};
+document.onmousemove = _move_elem;
+document.onmouseup = _destroy;
+
+var cursor_signature_left = document.getElementById('cursor-signature-left')
+var selected = null, // Object of the element to be moved
+x_pos = 0, y_pos = 0, // Stores x & y coordinates of the mouse pointer
+x_elem = 0, y_elem = 0; // Stores top, left values (edge) of the element
+// Will be called when user starts dragging an element
+function _drag_init(elem) {
+  // Store the object of the element which needs to be moved
+  selected = elem;
+  x_elem = x_pos - selected.offsetLeft;
+}
+// Will be called when user dragging an element
+var validation_left = document.querySelector('#validation-left');
+var validation_size = parseInt(window.getComputedStyle(validation_left).getPropertyValue("width").substring(2, -3));
+validation_size /= 6.5;
+var limit = validation_left.offsetLeft ;
+function _move_elem(e) {
+
+  x_pos = document.all ? window.event.clientX : e.pageX;
+  if (selected !== null) {
+    var ratio = x_pos - x_elem;
+    console.log(x_pos - x_elem);
+    console.log(ratio);
+    if (ratio < 0) {
+      ratio = 0;
+    } else if (ratio > limit) {
+      ratio = limit + validation_size;
+      cursor_signature_left.style.backgroundColor = "green";
+      window.location.href = '{{app.request.basepath}}/story';
+    } else if(ratio < 259){
+      cursor_signature_left.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
+    }
+    selected.style.left = ratio + 'px';
+  }
+}
+// Destroy the object when we are done
+function _destroy() {
+  selected = null;
+}
+// Bind the functions...
+document.getElementById('cursor-signature-left').onmousedown = function () {
+  _drag_init(this);
+  return false;
+};
+document.onmousemove = _move_elem;
+document.onmouseup = _destroy;
+
+</script>
 
 {{include('partials/footer.twig')}}
