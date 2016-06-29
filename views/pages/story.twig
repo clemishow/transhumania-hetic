@@ -99,14 +99,14 @@ function page_ajax(page, trigFunction) {
 /*
 *** FUNCTION AJAX
 */
-function page_ajax_player(page, video_name) {
+function page_ajax_player(page, video_name, switch_page) {
     var block_page = document.querySelector('.block-page');
     var request = new XMLHttpRequest();
     request.open('GET', '../views/pages/story/' + page + '.twig', true);
     request.onreadystatechange = function() {
         if(this.readyState == 4) {
             block_page.innerHTML = this.responseText;
-            player(video_name);
+            player(video_name, switch_page);
         }
     }
     request.send();
@@ -143,13 +143,13 @@ window.addEventListener("keydown",function(event) {
 
 window.addEventListener("keydown",function(event) {
   if (event.which == 65) {
-    var video_one = new page_ajax_player('video', 'video.mp4');
+    var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');
   }
 });
 
 window.addEventListener("keydown",function(event) {
   if (event.which == 90) {
-    var video_two = new page_ajax_player('video', 'bg_video.mp4');
+    var video_two = new page_ajax_player('video', 'bg_video.mp4', 'info_01');
   }
 });
 

@@ -72,7 +72,7 @@ function FullScreenIn() {
 }
 
 
-function player(video_name) {
+function player(video_name, switch_page) {
   var  player        = {};
 
   // GENERAL
@@ -105,10 +105,8 @@ function player(video_name) {
   function volume() {
     if (player.video.volume == 1) {
       player.video.volume = 0;
-      console.log(player.video.volume);
     } else if (player.video.volume == 0) {
       player.video.volume = 1;
-      console.log(player.video.volume);
     }
   }
 
@@ -133,6 +131,9 @@ function player(video_name) {
 
     // CURSOR 
       player.cursor_bar.style.left = progress_ratio_percent + '%';
+      if ((player.video.currentTime) >= (player.video.duration-0.05)) {
+        page_ajax(switch_page);
+      }
   },50);
 
   // CLICK ON PROGRESS BAR
@@ -145,8 +146,10 @@ function player(video_name) {
     player.video.currentTime = time;
   });
 
+  player.video.addEventListener('loadeddata', function() {
+     console.log('ok');
+  }, false);
 }
-
 
 
 
