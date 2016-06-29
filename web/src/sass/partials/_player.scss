@@ -1,0 +1,379 @@
+/**
+*** PLAYER
+*/
+
+.player {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 30px;
+	overflow: hidden;
+}
+
+.player video {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.player video::-webkit-media-controls {
+  display: none !important;
+}
+
+.player video::-moz-media-controls {
+  display: none !important;
+}
+
+.player video::-o-media-controls {
+  display: none !important;
+}
+
+.player video::-ms-media-controls {
+  display: none !important;
+}
+
+
+/**
+*** CONTROLS
+***** CONTAINER  
+*/
+
+.player .controls {
+	width: 100%;
+	height: 50px;
+	position: relative;
+		top: -22px;
+	opacity: 0;
+	z-index: 2147483647;
+}
+
+.player .controls:full-screen {
+	width: 80%;
+	position: absolute;
+		top: 93%;
+}
+
+.player .controls:-webkit-full-screen{
+	width: 80%;
+	position: absolute;
+		top: 93%;
+}
+
+.player .controls:-moz-full-screen{
+	width: 80%;
+	position: absolute;
+		top: 93%;
+}
+
+.player .controls-background {
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	background: #22313F;
+	opacity: 0.3;
+	box-shadow: 0px -100px 20px -10px rgba(0, 0, 0, 0.4) inset;
+}
+
+
+/** 
+*** BUTTONS 
+*/
+
+/* PLAY */
+
+.player .button-play {
+	width: 30px;
+	height: 30px;
+	color: #fefefe;
+	font-size: 24px;
+	position: relative;
+    	top: 8px;
+    	left: 12px;
+}
+
+.player .button-play-container {
+    width: 41px;
+    height: 41px;
+    position: absolute;
+    top: 7px;
+    left: 16px;
+}
+
+/* VOLUME */
+
+.player .button-volume {
+	color: #fefefe;
+	font-size: 24px;
+	position: absolute;
+   		top: 10px;
+    	left: 10px;
+}
+
+.player .button-volume-container {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    	top: 5px;
+    	left: 71px;
+    cursor: pointer;
+
+}
+
+.player .volume-level {
+	width: 41px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #e67e22;
+    opacity: 0.3;
+    -webkit-transition: all 300ms;
+	   -moz-transition: all 300ms;
+		-ms-transition: all 300ms;
+		 -o-transition: all 300ms;
+			transition: all 300ms;
+}
+
+/* FULLSCREEN */
+
+.player .button-fullScreen {
+	color: #fefefe;
+	font-size: 24px;
+	position: absolute;
+   		top: 15px;
+    	right: 30px;
+}
+
+
+/* TIME VIDEO */
+
+.player .time-container {
+	position: absolute;
+    	top: 20px;
+    	left: 131px;
+}
+
+.player .time {
+	color: #fefefe;
+	font-size: 14px;
+	position: relative;
+}
+
+/**
+*** PROGRESS BAR
+*/
+
+.player .seek-bar {
+	width: 100%;
+	height: 5px;
+	background: #22313F;
+	margin: 0 auto;
+	cursor: pointer;
+	position: relative;
+	z-index: 10;
+}
+
+.player .seek-bar .progress-bar {
+	width: 100%;
+	height: 100%;
+	background: #e67e22;
+	position: absolute;
+	z-index: 10;
+	-webkit-transform: scaleX(0);
+	   -moz-transform: scaleX(0);
+		-ms-transform: scaleX(0);
+		 -o-transform: scaleX(0);
+			transform: scaleX(0);
+	-webkit-transition: transfrom 100ms;
+	   -moz-transition: transfrom 100ms;
+		-ms-transition: transfrom 100ms;
+		 -o-transition: transfrom 100ms;
+			transition: transfrom 100ms;
+	-webkit-transform-origin: 0;
+	   -moz-transform-origin: 0;
+		-ms-transform-origin: 0;
+		 -o-transform-origin: 0;
+			transform-origin: 0;
+}
+
+.player .seek-bar .cursor-bar {
+	width: 19px;
+	height: 19px;
+	border-radius: 50%;
+	background: #f39c12;
+	position: absolute;
+		top: -5px;
+	margin-left: -8px;
+	-webkit-transform: scale(0);
+	   -moz-transform: scale(0);
+		-ms-transform: scale(0);
+		 -o-transform: scale(0);
+			transform: scale(0);
+	z-index: 10;
+}
+
+
+/**
+*** VIDEO PREVIEW
+*/
+
+/* BUTTON WATCH THE TRAILER */
+
+.player .container-play-preview {
+	width: 210px;
+	height: 40px;
+	padding: 10px;
+	border: solid 3px #c0392b;
+	margin: 0 auto;
+	position: relative;
+		top: 252px;
+}
+
+.player .container-play-preview .play-preview {
+	color: #c0392b;
+	font-size: 30px;
+	position: relative;
+	left: 2px;
+    top: 4px;
+}
+
+.player .container-play-preview, .container-play-preview .play-preview, .container-play-preview .title-preview, .container-play-preview .background, .player .container-title-video, .player .controls {
+	-webkit-transition: 300ms all;
+	   -moz-transition: 300ms all;
+		-ms-transition: 300ms all;
+		 -o-transition: 300ms all;
+			transition: 300ms all;	
+}
+
+.player:hover .play-preview  {
+	color: #e74c3c;
+	-webkit-transition: 300ms all;
+	   -moz-transition: 300ms all;
+		-ms-transition: 300ms all;
+		 -o-transition: 300ms all;
+			transition: 300ms all;
+	cursor: pointer;
+
+}
+
+.player:hover .container-play-preview {
+	border-color: #e74c3c;
+	transition: 300ms all;
+	-webkit-transition: 300ms all;
+	   -moz-transition: 300ms all;
+		-ms-transition: 300ms all;
+		 -o-transition: 300ms all;
+			transition: 300ms all;
+}
+
+/* TITLE VIDEO */
+
+.player .container-play-preview .title-preview {
+	color: #c0392b;
+	position: relative;
+    	left: 36px;
+    	top: -17px;
+}
+
+
+.player video:hover .container-play-preview .title-preview {
+	color: #e74c3c;
+	-webkit-transition: 300ms all;
+	   -moz-transition: 300ms all;
+		-ms-transition: 300ms all;
+		 -o-transition: 300ms all;
+			transition: 300ms all;
+}
+
+.player .container-play-preview .background {
+	width: 210px;
+	height: 40px;
+	padding: 10px;
+	background: #000;
+	opacity: 0.6;
+	position: absolute;
+		left: 0px;
+    	top: 0px;    
+}
+
+.player:hover .container-play-preview .background {
+	opacity: 0.7;
+	-webkit-transition: 300ms all;
+	   -moz-transition: 300ms all;
+		-ms-transition: 300ms all;
+		 -o-transition: 300ms all;
+			transition: 300ms all;
+}
+
+.player .container-title-video {
+	min-width: 27%;
+	max-width: 35%;
+	height: 30px;
+	text-align: center;
+	padding-top: 13px;
+	position: relative;
+		left: 10px;
+		top: 119px;
+	background: #c0392b;
+}
+
+.player .title-video {
+	font-size: 1em;
+}
+
+
+/* 
+* MEDIA QUERIES FOR RESPONSIVE
+***
+*/
+
+/*
+* SIZE : 1150PX
+*/
+
+@media screen and (max-width: 1150px) {
+	.player .title-video {
+		font-size: 12px;
+		position: relative;
+		top: 2px;
+	}
+
+	.player .container-play-preview {
+		position: relative;
+			top: 202px;
+	}
+}
+
+/**
+*** SIZE : 850PX
+*/
+
+@media screen and (max-width: 850px) {
+	.player .title-video {
+		font-size: 10px;
+		position: relative;
+		top: 4px;
+	}
+
+	.player .container-play-preview {
+		position: relative;
+			top: 182px;
+	}
+}
+
+/**
+*** SIZE : 650PX
+*/
+
+@media screen and (max-width: 680px) {
+	.player .container-play-preview {
+		position: relative;
+			top: 152px;
+	}
+
+	.player .title-video {
+		font-size: 10px;
+		position: relative;
+			top: -2px;
+	}
+}
