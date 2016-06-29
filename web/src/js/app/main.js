@@ -135,6 +135,16 @@ function player(video_name) {
       player.cursor_bar.style.left = progress_ratio_percent + '%';
   },50);
 
+  // CLICK ON PROGRESS BAR
+  player.seek_bar.addEventListener('click', function(e) {
+    var bounding_rect = player.seek_bar.getBoundingClientRect(),
+       x        = e.clientX - bounding_rect.left,
+       ratio      = x / bounding_rect.width,
+       time       = ratio * player.video.duration;
+
+    player.video.currentTime = time;
+  });
+
 }
 
 
