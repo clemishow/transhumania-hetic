@@ -156,21 +156,6 @@ $app->get('/story', function() use ($app, $fb, $facebook) {
 })
 ->bind('story');
 
-// CORE OF THE WEBDOC - STORY (UI OF IMAGES ON HOVER AND STUFF)
-$app->get('/dilemma', function() use ($app, $fb, $facebook) {
-
-	$data = array();
-    $data['title_page'] = 'Dilemme';
-    $data['page_class'] = 'dilemma';
-
-    // GET USER DATA
-    $facebookLogin = $facebook->getURL($fb);
-    $data['loginUrl'] = $facebookLogin;
-
-	return $app['twig']->render('pages/dilemma.twig', $data);
-})
-->bind('dilemma');
-
 // BROWSE
 $app->get('/browse', function() use ($app, $fb, $facebook) {
 
