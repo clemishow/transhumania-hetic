@@ -576,22 +576,6 @@ footer {
   animation: fadeIn 0s ease-in-out 0s normal running 1 forwards;
 }
 
-.body {
-  opacity: 0.4;
-  fill: white;
-}
-
-.brain {
-  opacity: 0.4;
-  fill: #4a90e2;
-  animation: fadeInBody .4s ease-in-out 0s alternate infinite running forwards;
-}
-
-.others {
-  opacity: 0.4;
-  fill: white;
-}
-
 .button-pass {
   user-select: none;
   -webkit-user-select: none;
@@ -1100,6 +1084,32 @@ footer {
   .information-panel {
     left: 2.5rem;
   }
+}
+
+.next-button {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  color: black;
+  background-color: white;
+  width: 11rem;
+  padding: .75rem 2rem;
+  margin: auto;
+  font-weight: 500;
+  margin-top: 2rem;
+  box-shadow: 1px 1px 1px 1px black;
+  border-radius: 3px;
+}
+
+.next-button:hover {
+  color: #4a90e2;
+  background-color: #F6F6F6;
+}
+
+.next-button:active {
+  background-color: white;
 }
 
 /**

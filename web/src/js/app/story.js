@@ -137,6 +137,10 @@ window.addEventListener('keydown', function(e) {
   }
 });
 
+function redirection_end_pacemaker(){
+  var tapage = new page_ajax('info_01');
+}
+
 
 /*
 *** INIT
