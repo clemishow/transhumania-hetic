@@ -108,12 +108,11 @@ window.addEventListener('keydown', function(e) {
 
 
 
-
 /*
 *** INIT
 */
 // PAGE TO LOAD
-page_ajax('info_01');
+var page_01 = new page_ajax('info_01');
 // SONG TO LOAD
 var audio_track_01 = new audio('audio.mp3');
 var audio_track_02 = new audio('audio2.mp3');
