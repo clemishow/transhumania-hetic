@@ -2,12 +2,27 @@
 *** AUDIO
 */
 function audio(audio_name) {
-  var container_song          = {};
+  var song              = {};
 
-  container_song.audio        = document.querySelector('audio');
+  song.container        = document.querySelector('.audio-controller');
+  song.audio            = song.container.querySelector('audio');
 
-  container_song.audio.volume = 1;
-  container_song.audio.src    = 'src/medias/' + audio_name;
+  song.audio.volume     = 1;
+  song.audio.src        = 'src/medias/' + audio_name;
+}
+
+
+/*
+*** VOICE
+*/
+function voice(audio_name) {
+  var voice              = {};
+
+  voice.container        = document.querySelector('.voice-controller');
+  voice.audio            = voice.container.querySelector('audio');
+
+  voice.audio.volume     = 1;
+  voice.audio.src        = 'src/medias/' + audio_name;
 }
 
 
@@ -114,8 +129,8 @@ window.addEventListener('keydown', function(e) {
 // PAGE TO LOAD
 var page_01 = new page_ajax('info_01');
 // SONG TO LOAD
-var audio_track_01 = new audio('audio.mp3');
 var audio_track_02 = new audio('audio2.mp3');
+var voice_track_01 = new voice('audio.mp3');
 
 
 /*

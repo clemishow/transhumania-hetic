@@ -145,11 +145,14 @@ function player(video_name, switch_page) {
 */
 
 function volume_audio() {
-  var audio   = document.querySelector('audio');
-  if (audio.volume == 1) {
+  var audio   = document.querySelector('.audio-controller audio');
+  var voice   = document.querySelector('.voice-controller audio');
+  if (audio.volume == 1 && voice.volume == 1) {
     audio.volume = 0;
-  } else if (audio.volume == 0) {
+    voice.volume = 0;
+  } else if (audio.volume == 0 && voice.volume == 0) {
     audio.volume = 1;
+    voice.volume = 1;
   }
 }
 
