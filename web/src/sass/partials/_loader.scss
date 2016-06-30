@@ -1,0 +1,123 @@
+.loader{
+  position: absolute;
+  z-index: 999;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  .text{
+    margin-top: 15vw;
+  }
+  h1{
+    font-family: "Abrade",sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  h2{
+    font-family: "Abrade",sans-serif;
+    font-size: 1.2rem;
+    font-weight: 200;
+    letter-spacing: .5px;
+    margin: 0;
+    margin-top: .6rem;
+    padding: 0;
+  }
+  .loader-dot{
+    background-color: white;
+    opacity: 0;
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    margin-left: .3rem;
+    border-radius: 50px;
+    &:nth-child(1){
+      animation: animationDot .5s ease-in-out 0s alternate running infinite forwards;
+    }
+    &:nth-child(2){
+      animation: animationDot .5s ease-in-out .2s alternate running infinite forwards;
+    }
+    &:nth-child(3){
+      animation: animationDot .5s ease-in-out .4s alternate running infinite forwards;
+    }
+  }
+  &.hide{
+    display: none;
+  }
+}
+.icon{
+  position: relative;
+  width: 10rem;
+  height: 12rem;
+  margin: auto;
+  display: block;
+  svg{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    &:nth-child(2){
+      width: 60%;
+      top: 2.5rem;
+      left:2rem;
+    }
+  }
+  .square{
+    position: absolute;
+    display: inline-block;
+    top: 100rem;
+    fill: none;
+    stroke: white;
+    stroke-width: 13;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: fadeIn .5s ease-in 0s normal 1 running forwards, stroke 15s 0s normal infinite running forwards;
+  }
+  .headset{
+    position: absolute;
+    display: inline-block;
+    fill: rgba(250, 121, 53, 1);
+    opacity: 0;
+    transform-origin: center;
+    transform: rotate(3deg);
+    animation: fadeIn .5s ease-in .3s normal 1 running forwards, tingling 1s ease-in .3s normal infinite running forwards;
+  }
+}
+
+@keyframes tingling{
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+      transform: rotate(-2deg);
+  }
+  50%{
+      transform: rotate(3deg);
+  }
+  75%{
+      transform: rotate(-1deg);
+  }
+  100%{
+      transform: rotate(0deg);
+  }
+}
+
+@keyframes stroke{
+  0%{
+    stroke-dashoffset: 1400;
+  }
+  100%{
+    stroke-dashoffset: 6999.5;
+  }
+}
+
+@keyframes animationDot{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
