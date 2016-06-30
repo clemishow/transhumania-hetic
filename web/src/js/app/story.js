@@ -7,7 +7,7 @@ function audio(audio_name) {
   song.container        = document.querySelector('.audio-controller');
   song.audio            = song.container.querySelector('audio');
 
-  song.audio.volume     = 1;
+  song.audio.volume     = 0; // OFF SOUND
   song.audio.src        = 'src/medias/' + audio_name;
 }
 
@@ -21,10 +21,21 @@ function voice(audio_name) {
   voice.container        = document.querySelector('.voice-controller');
   voice.audio            = voice.container.querySelector('audio');
 
-  voice.audio.volume     = 1;
+  voice.audio.volume     = 0; // OFF SOUND
   voice.audio.src        = 'src/medias/' + audio_name;
 }
 
+/*
+*** FUNCTION AJAX VARIABLE
+*/
+// function variable_ajax() {
+//   var request = new XMLHttpRequest();
+//   request.open('POST', 'browse', true);
+//   request.send();
+//   request = null;
+// } 
+// var choice_swipe = new variable_ajax();
+// console.log(choice_swipe);
 
 /*
 *** FUNCTION AJAX NORMAL PAGE
@@ -83,12 +94,13 @@ function page_ajax_dilemma(page, url_left, url_right) {
 
 
 /*
-*** TRIGGER DILEMMA ON SPACE TOUCHE
+*** TRIGGER DILEMMA ON SPACE TOUCH
 */
 
 function redirection_button (){
   document.getElementById('human_body').style.opacity="0";
   page_ajax_dilemma('dilemma', 'browse', 'try');
+
 };
 
 
@@ -100,6 +112,11 @@ function redirection_button (){
 window.addEventListener('keydown', function(e) {
   var key = e.keyCode || e.which;
   switch(key) {
+    // SPACE TOUCH
+    case 32:
+      page_ajax_dilemma('dilemma', 'browse', 'try');
+    break;
+
     // A TOUCH
     case 65:
     var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');
@@ -120,7 +137,6 @@ window.addEventListener('keydown', function(e) {
     break;
   }
 });
-
 
 
 /*
@@ -171,6 +187,8 @@ function onSwipeValid(direction,page) {
         that.swipe.cursor_signature.style.backgroundColor = "green";
         // AJAX REDIRECTION AFTER SWIPE
         page_ajax(page);
+        var choice = page;
+        console.log(page);
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
       }

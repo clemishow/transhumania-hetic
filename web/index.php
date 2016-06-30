@@ -8,6 +8,7 @@ require_once '../vendor/autoload.php';
 require_once __DIR__.'/../models/facebook.class.php';
 
 define ('URL', 'http://localhost:9999/transhumania-hetic/web');
+define ('URLR', 'http://localhost:9999/transhumania-hetic');
 
 // SILEX
 
