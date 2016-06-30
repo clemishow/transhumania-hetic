@@ -7,7 +7,7 @@ function audio(audio_name) {
   song.container        = document.querySelector('.audio-controller');
   song.audio            = song.container.querySelector('audio');
 
-  song.audio.volume     = 0; // OFF SOUND
+  song.audio.volume     = 0.1; // OFF SOUND
   song.audio.src        = 'src/medias/' + audio_name;
 }
 
@@ -21,8 +21,8 @@ function voice(audio_name) {
   voice.container        = document.querySelector('.voice-controller');
   voice.audio            = voice.container.querySelector('audio');
 
-  voice.audio.volume     = 0; // OFF SOUND
-  voice.audio.src        = 'src/medias/' + audio_name;
+  voice.audio.volume     = 1; // OFF SOUND
+  voice.audio.src        = 'src/medias/voices/' + audio_name;
 }
 
 /*
@@ -48,6 +48,7 @@ function page_ajax(page, trigFunction) {
     if(this.readyState == 4) {
       block_page.innerHTML = this.responseText;
       trigFunction;
+      btn_next_01();
     }
   }
   request.send();
@@ -93,15 +94,29 @@ function page_ajax_dilemma(page, url_left, url_right) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 *** TRIGGER DILEMMA ON SPACE TOUCH
 */
 
-function redirection_button (){
-  document.getElementById('human_body').style.opacity="0";
-  page_ajax_dilemma('dilemma', 'browse', 'try');
+// function redirection_button (){
+//   document.getElementById('human_body').style.opacity="0";
+//   page_ajax_dilemma('dilemma', 'browse', 'try');
 
-};
+// };
 
 
 // addEventListener('click', function() {
@@ -132,24 +147,65 @@ window.addEventListener('keydown', function(e) {
     */
     // E TOUCH
     case 69:
-    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
+      // var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
     break;
   }
 });
 
-function redirection_end_pacemaker(){
-  var tapage = new page_ajax('info_01');
-}
-
+// function redirection_end_pacemaker(){
+//   var tapage = new page_ajax('info_01');
+// }
 
 /*
 *** INIT
 */
+
 // PAGE TO LOAD
-var page_01 = new page_ajax('info_01');
-// SONG TO LOAD
-var audio_track_02 = new audio('audio2.mp3');
-var voice_track_01 = new voice('audio.mp3');
+var video_intro = new page_ajax_player('video', 'video.mp4', 'info_01_pacemaker');
+
+
+function btn_next_01() {
+  var container_btn_next = document.querySelector('.container-btn-next');
+  container_btn_next.addEventListener('click', function(){
+    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
+    var voice_track_02 = new voice('03-Pacemaker.wav');
+    voice
+  });
+}
+
+function btn_next_02() {
+  var container_btn_next = document.querySelector('.container-btn-next-02');
+  console.log(this);
+  container_btn_next.addEventListener('click', function(){
+    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
+    var voice_track_02 = new voice('03-Pacemaker.wav');
+    voice
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -192,6 +248,11 @@ function onSwipeValid(direction,page) {
         page_ajax(page);
         var choice = page;
         console.log(page);
+        setTimeout(function(){
+          if (choice == 'info_02_pacemaker') {
+            console.log('yooo');
+          }
+        });
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
       }

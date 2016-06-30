@@ -98,7 +98,7 @@ function player(video_name, switch_page) {
   player.video.src               = video_name;
 
 
-  player.video.volume = 0;
+  player.video.volume = 0.2;
 
   // PLAY
   function play() {
@@ -126,11 +126,12 @@ function player(video_name, switch_page) {
 
     // CURSOR
       player.cursor_bar.style.left = progress_ratio_percent + '%';
-      video_switch = (player.video.currentTime) >= (player.video.duration-0.1);
+      video_switch = (player.video.currentTime) >= (player.video.duration-3);
       if (video_switch) {
         player.video.currentTime = 0;
         pause();
         page_ajax(switch_page);
+        var audio_track_01 = new audio('audio.mp3');
       }
   },50);
 
