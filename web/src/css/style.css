@@ -455,6 +455,7 @@
   position: absolute;
   z-index: 2;
   height: 100%;
+  width: 100%;
   text-align: center;
   animation: fadeIn 1s ease-in-out 0s normal running 1 forwards;
 }
@@ -746,12 +747,12 @@ footer {
 .image-placeholder {
   position: absolute;
   background-image: url("../images/images-story/pacemaker.png");
-  background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+  overflow: hidden;
   width: 100vw;
   height: 100%;
-  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .image-placeholder img {
@@ -759,20 +760,61 @@ footer {
 }
 
 .image-placeholder.image-story-1 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
   background-image: url("../images/images-story/pacemaker.png");
 }
 
 .image-placeholder.image-story-2 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
   background-image: url("../images/images-story/pacemaker_accept.png");
+}
+
+.image-placeholder.image-story-3 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
+  background-image: url("../images/images-story/prosthetics_1.png");
+}
+
+.image-placeholder.image-story-4 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
+  background-image: url("../images/images-story/prosthetics_2.png");
+}
+
+.image-placeholder.image-story-5 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
+  background-image: url("../images/images-story/implants.png");
+}
+
+.image-placeholder.image-story-6 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
+  background-image: url("../images/images-story/brain.png");
+}
+
+.image-placeholder.image-story-7 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
+  background-image: url("../images/images-story/artificial_intelligence.png");
+}
+
+.image-placeholder.image-story-8 {
+  animation: animateImage 8s ease-in-out 0s alternate running infinite forwards;
+  background-image: url("../images/images-story/stem_cells.png");
+}
+
+@keyframes animateImage {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.05) rotate(1deg);
+  }
 }
 
 .hover-informations {
   position: absolute;
   z-index: 1;
-  width: 100%;
   height: 100vh;
   overflow: hidden;
   top: 0;
+  width: 100%;
 }
 
 .title-wrapper {
@@ -815,6 +857,71 @@ footer {
 .information-element.story-1 {
   top: 23vw !important;
   left: 62vw !important;
+}
+
+.information-element.story-2A {
+  top: 28vw !important;
+  left: 62vw !important;
+}
+
+.information-element.story-2B {
+  top: 25vw !important;
+  left: 30vw !important;
+}
+
+.information-element.story-3A {
+  top: 28vw !important;
+  left: 62vw !important;
+}
+
+.information-element.story-3B {
+  top: 25vw !important;
+  left: 30vw !important;
+}
+
+.information-element.story-4A {
+  top: 28vw !important;
+  left: 62vw !important;
+}
+
+.information-element.story-4B {
+  top: 25vw !important;
+  left: 76vw !important;
+}
+
+.information-element.story-4A {
+  top: 28vw !important;
+  left: 62vw !important;
+}
+
+.information-element.story-4C {
+  top: 25vw !important;
+  left: 49vw !important;
+}
+
+.information-element.story-5A {
+  top: 22vw !important;
+  left: 48vw !important;
+}
+
+.information-element.story-5B {
+  top: 28vw !important;
+  left: 24vw !important;
+}
+
+.information-element.story-7A {
+  top: 22vw !important;
+  left: 48vw !important;
+}
+
+.information-element.story-7B {
+  top: 28vw !important;
+  left: 24vw !important;
+}
+
+.information-element.story-7C {
+  top: 14vw !important;
+  left: 37vw !important;
 }
 
 .information-element:nth-child(1) {
