@@ -70,16 +70,21 @@ function page_ajax_dilemma(page, url_left, url_right) {
 /*
 *** TRIGGER DILEMMA ON SPACE TOUCHE
 */
+
+function redirection_button (){
+  document.getElementById('human_body').style.opacity="0";
+  page_ajax_dilemma('dilemma', 'browse', 'try');
+};
+
+
+// addEventListener('click', function() {
+//   // document.getElementById('human_body').style.opacity="0";
+//   // page_ajax_dilemma('dilemma', 'browse', 'try');
+// });
+
 window.addEventListener('keydown', function(e) {
   var key = e.keyCode || e.which;
   switch(key) {
-
-    // SPACE TOUCH
-    case 32:
-    document.getElementById('human_body').style.opacity="0";
-    page_ajax_dilemma('dilemma', 'browse', 'try');
-    break;
-
     // A TOUCH
     case 65:
     var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');

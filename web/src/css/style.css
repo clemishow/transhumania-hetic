@@ -592,6 +592,36 @@ footer {
   fill: white;
 }
 
+.button-pass {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  position: absolute;
+  z-index: 2;
+  background-color: #f4f4f4;
+  padding: .5rem 2rem;
+  border-radius: 3px;
+  right: 1.5rem;
+  top: 2rem;
+  font-size: .8rem;
+  color: #181818;
+  box-shadow: 0px 1px 4px -1px black;
+  opacity: 0;
+  animation: translateButton 1s ease-in-out 1s normal running 1 forwards;
+}
+
+.button-pass:hover {
+  background-color: #4a90e2;
+  color: #f4f4f4;
+}
+
+.button-pass:active {
+  background-color: #f4f4f4;
+  color: #4a90e2;
+}
+
 .image-placeholder {
   position: absolute;
   background-image: url("../images/images-story/emilia-clarke.jpg");
@@ -1016,6 +1046,17 @@ footer {
     opacity: 0.5;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+@keyframes translateButton {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
     opacity: 1;
   }
 }
