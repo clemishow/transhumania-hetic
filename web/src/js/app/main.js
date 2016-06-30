@@ -117,7 +117,10 @@ function player(video_name, switch_page) {
 
     // CURSOR 
       player.cursor_bar.style.left = progress_ratio_percent + '%';
-      if ((player.video.currentTime) >= (player.video.duration-0.05)) {
+      video_switch = (player.video.currentTime) >= (player.video.duration-0.05);
+      if (video_switch) {
+        player.video.currentTime = 0;
+        pause();
         page_ajax(switch_page);
       }
   },50);
