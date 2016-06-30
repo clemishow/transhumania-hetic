@@ -75,12 +75,24 @@
     </div>
   </div>
 </div>
-<div class="audio-controller"></div>
+<div class="audio-controller">
+  <audio autoplay="true" src="{{app.request.basepath}}/src/medias/audio.mp3"></audio>
+</div>
 
 <script type="text/javascript">
 
+// AUDIO 
+function audio(audio_name) {
+  var container_song          = {};
+
+  container_song.audio        = document.querySelector('audio');
+
+  container_song.audio.volume = 1;
+  container_song.audio.src    = '{{app.request.basepath}}/src/medias/' + audio_name; 
+}
+
 /*
-*** FUNCTION AJAX
+*** FUNCTION AJAX NORMAL PAGE
 */
 function page_ajax(page, trigFunction) {
     var block_page = document.querySelector('.block-page');
@@ -97,7 +109,7 @@ function page_ajax(page, trigFunction) {
 }
 
 /*
-*** FUNCTION AJAX
+*** FUNCTION AJAX PLAYER
 */
 function page_ajax_player(page, video_name, switch_page) {
     var block_page = document.querySelector('.block-page');
@@ -157,8 +169,12 @@ window.addEventListener("keydown",function(event) {
 *** INIT 
 */
 
+// PAGE TO LOAD
 page_ajax('info_01');
+// SONG TO LOAD
+var audio_track_01 = new audio('audio.mp3');
 
+setTimeout(function(){var audio_track_02 = new audio('audio2.mp3');},2000)
 
 /*
 *** SWIPE

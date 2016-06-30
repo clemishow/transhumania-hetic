@@ -73,7 +73,7 @@ function FullScreenIn() {
 
 
 function player(video_name, switch_page) {
-  var  player        = {};
+  var  player                    = {};
 
   // GENERAL
   player.container               = document.querySelector('.player');
@@ -85,8 +85,8 @@ function player(video_name, switch_page) {
   player.progress_bar            = player.container.querySelector('.progress-bar');
   // BUTTON
   player.volume                  = document.querySelector('.volume-btn');
-  var video_name = 'src/medias/' + video_name;
-  player.video.src = video_name;
+  var video_name                 = 'src/medias/' + video_name;
+  player.video.src               = video_name;
 
 
   player.video.volume = 0;
@@ -100,20 +100,6 @@ function player(video_name, switch_page) {
   function pause() {
     player.video.pause();
   }
-
-  // VOLUME 
-  function volume() {
-    if (player.video.volume == 1) {
-      player.video.volume = 0;
-    } else if (player.video.volume == 0) {
-      player.video.volume = 1;
-    }
-  }
-
-  // BTN VOLUME
-  player.volume.addEventListener('click', function() {
-    volume();
-  });
 
   /**
   *** SEEK BAR
@@ -150,6 +136,22 @@ function player(video_name, switch_page) {
      console.log('ok');
   }, false);
 }
+
+  // VOLUME 
+  function volume_audio() {
+    var audio   = document.querySelector('audio');
+    if (audio.volume == 1) {
+      audio.volume = 0;
+    } else if (audio.volume == 0) {
+      audio.volume = 1;
+    }
+  }
+
+var volume_btn   = document.querySelector('.volume-btn');
+volume_btn.addEventListener('click', function(){
+  volume_audio();
+});
+ 
 
 
 
