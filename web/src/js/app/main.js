@@ -133,19 +133,22 @@ function player(video_name, switch_page) {
   });
 
   player.video.addEventListener('loadeddata', function() {
-     console.log('ok');
+      // VIDEO LOAD 
   }, false);
 }
 
-  // VOLUME 
-  function volume_audio() {
-    var audio   = document.querySelector('audio');
-    if (audio.volume == 1) {
-      audio.volume = 0;
-    } else if (audio.volume == 0) {
-      audio.volume = 1;
-    }
+/*
+*** AUDIO VOLUME
+*/
+
+function volume_audio() {
+  var audio   = document.querySelector('audio');
+  if (audio.volume == 1) {
+    audio.volume = 0;
+  } else if (audio.volume == 0) {
+    audio.volume = 1;
   }
+}
 
 var volume_btn   = document.querySelector('.volume-btn');
 volume_btn.addEventListener('click', function(){
