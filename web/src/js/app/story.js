@@ -25,17 +25,6 @@ function voice(audio_name) {
   voice.audio.src        = 'src/medias/voices/' + audio_name;
 }
 
-/*
-*** FUNCTION AJAX VARIABLE
-*/
-// function variable_ajax() {
-//   var request = new XMLHttpRequest();
-//   request.open('POST', 'browse', true);
-//   request.send();
-//   request = null;
-// }
-// var choice_swipe = new variable_ajax();
-// console.log(choice_swipe);
 
 /*
 *** FUNCTION AJAX NORMAL PAGE
@@ -47,8 +36,23 @@ function page_ajax(page, trigFunction) {
   request.onreadystatechange = function() {
     if(this.readyState == 4) {
       block_page.innerHTML = this.responseText;
+      var container_btn_next = document.querySelector('.container-btn-next');
+      console.log(container_btn_next);
+        container_btn_next.addEventListener('click', function(){
+          
+          // IF INFO 1
+          if (page == 'info_01_pacemaker') {
+            var dilemma_01 = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
+            var voice_track_02 = new voice('03-Pacemaker.wav');
+          } 
+
+          // IF INFO 2
+          else if (page == 'info_02_pacemaker') {
+            var dilemma_02 = new page_ajax('info_05_implants');
+          }
+
+        });
       trigFunction;
-      btn_next_01();
     }
   }
   request.send();
@@ -112,77 +116,12 @@ function page_ajax_dilemma(page, url_left, url_right) {
 *** TRIGGER DILEMMA ON SPACE TOUCH
 */
 
-// function redirection_button (){
-//   document.getElementById('human_body').style.opacity="0";
-//   page_ajax_dilemma('dilemma', 'browse', 'try');
-
-// };
-
-
-// addEventListener('click', function() {
-//   // document.getElementById('human_body').style.opacity="0";
-//   // page_ajax_dilemma('dilemma', 'browse', 'try');
-// });
-
-window.addEventListener('keydown', function(e) {
-  var key = e.keyCode || e.which;
-  switch(key) {
-    // SPACE TOUCH
-    case 32:
-      page_ajax_dilemma('dilemma', 'browse', 'try');
-    break;
-
-    // A TOUCH
-    case 65:
-    var video_two = new page_ajax_player('video', 'video.mp4', 'info_01');
-    break;
-
-    // Z TOUCH
-    case 90:
-    var tapage = new page_ajax('info_01_pacemaker');
-    break;
-
-    /****************************** EXEMPLE ******************************
-    *** POUR TEST VOS PAGES METTEZ VOTRE PAGE
-    */
-    // E TOUCH
-    case 69:
-      // var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
-    break;
-  }
-});
-
-// function redirection_end_pacemaker(){
-//   var tapage = new page_ajax('info_01');
-// }
-
 /*
 *** INIT
 */
 
 // PAGE TO LOAD
 var video_intro = new page_ajax_player('video', 'video.mp4', 'info_01_pacemaker');
-
-
-function btn_next_01() {
-  var container_btn_next = document.querySelector('.container-btn-next');
-  container_btn_next.addEventListener('click', function(){
-    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
-    var voice_track_02 = new voice('03-Pacemaker.wav');
-    voice
-  });
-}
-
-function btn_next_02() {
-  var container_btn_next = document.querySelector('.container-btn-next-02');
-  console.log(this);
-  container_btn_next.addEventListener('click', function(){
-    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
-    var voice_track_02 = new voice('03-Pacemaker.wav');
-    voice
-  });
-}
-
 
 
 
@@ -247,11 +186,17 @@ function onSwipeValid(direction,page) {
         // AJAX REDIRECTION AFTER SWIPE
         page_ajax(page);
         var choice = page;
-        console.log(page);
         setTimeout(function(){
+          // IF CHOICE DILEMMA
           if (choice == 'info_02_pacemaker') {
-            console.log('yooo');
-          }
+            var voice_track_03 = new voice('05-Succes_pacemaker.wav');
+          } 
+
+          // IF DILEMMA 2
+          else if (choice == 'dilemma_02_pacemaker') {
+            var voice_track_04 = new voice('04-Risques_pacemaker.wav');
+            var dilemma_02 = new page_ajax_dilemma('dilemma_02_pacemaker','info_03_prosthetics','info_02_pacemaker');
+          } 
         });
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
