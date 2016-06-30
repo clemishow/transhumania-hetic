@@ -37,7 +37,7 @@ function page_ajax(page, trigFunction) {
     if(this.readyState == 4) {
       block_page.innerHTML = this.responseText;
       var container_btn_next = document.querySelector('.container-btn-next');
-      console.log(container_btn_next);
+      
         container_btn_next.addEventListener('click', function(){
           
           // IF INFO 1
