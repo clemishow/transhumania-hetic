@@ -26,7 +26,7 @@
     transition: background-color .1s ease-in-out, opacity .1s ease-in-out;
     cursor: pointer;
     &:hover{
-      background-color: rgba(70, 142, 229, .5);
+      background-color: rgba(92, 131, 47, .6);
       opacity: 1;
       .text{
         transform: translateZ(0) translateY(25vw);
@@ -35,9 +35,9 @@
         margin-top: -15rem;
         animation: fadeIn .3s ease-in-out .3s normal running 1 forwards;
         .cursor{
-          background-color: rgba(230, 183, 133, 1);
+          background-color: rgba(247, 122, 82, 1);
           &:hover{
-            background-color: rgba(230, 183, 133, 1) - #090f1b;
+            background-color: rgba(247, 122, 82, 1) - #090f1b;
           }
         }
       }
@@ -53,7 +53,7 @@
     transition: background-color .1s ease-in-out, opacity .1s ease-in-out;
     cursor: pointer;
     &:hover{
-      background-color: rgba(230, 183, 133, .5);
+      background-color: rgba(25, 52, 65, .7);
       opacity: 1;
       .text{
         transform: translateZ(0) translateY(15vw);
@@ -103,14 +103,14 @@
   .cursor{
     position: absolute;
     z-index: 2;
-    background-color: rgba(79, 136, 255, 1);
+    background-color: rgba(247, 122, 82, 1);
     width: 30px;
     height: 30px;
     left: 0;
     transform: rotate(45deg);
     transition: boxShadow .2s,background-color .2s;
     &:hover{
-      background-color: rgba(79, 136, 255, 1) - #090f1b;
+      background-color: rgba(247, 122, 82, 1) - #090f1b;
       box-shadow: 1px 1px 6px -2px black;
     }
   }

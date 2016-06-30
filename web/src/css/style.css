@@ -348,7 +348,7 @@
 }
 
 .dilemma-panel .left-choice:hover {
-  background-color: rgba(70, 142, 229, 0.5);
+  background-color: rgba(92, 131, 47, 0.6);
   opacity: 1;
 }
 
@@ -362,11 +362,11 @@
 }
 
 .dilemma-panel .left-choice:hover .signature .cursor {
-  background-color: #e6b785;
+  background-color: #f77a52;
 }
 
 .dilemma-panel .left-choice:hover .signature .cursor:hover {
-  background-color: #dda86a;
+  background-color: #ee6b37;
 }
 
 .dilemma-panel .right-choice {
@@ -381,7 +381,7 @@
 }
 
 .dilemma-panel .right-choice:hover {
-  background-color: rgba(230, 183, 133, 0.5);
+  background-color: rgba(25, 52, 65, 0.7);
   opacity: 1;
 }
 
@@ -439,7 +439,7 @@
 .signature .cursor {
   position: absolute;
   z-index: 2;
-  background-color: #4f88ff;
+  background-color: #f77a52;
   width: 30px;
   height: 30px;
   left: 0;
@@ -448,7 +448,7 @@
 }
 
 .signature .cursor:hover {
-  background-color: #4679e4;
+  background-color: #ee6b37;
   box-shadow: 1px 1px 6px -2px black;
 }
 
