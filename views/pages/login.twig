@@ -1,22 +1,33 @@
 {{include('partials/header.twig')}}
 
-	<div class="decoration">
-		<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
-		<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
-		<div class="clear"></div>
-	</div>
-	<div class="main-core">
-		<img src="{{app.request.basepath}}/src/images/transhumania_logo-02.svg" alt="Logo de Transhumania">
-		<p>Embarquez dans une expérience immersive et interactive dans le monde de l’humain augmenté. Quand la science fiction dépasse la réalité.</p>
-		<a class="facebook-button" href="{{loginUrl}}">
-			<img src="{{app.request.basepath}}/src/images/facebook_icon.svg" alt="Icone de Facebook">
-			Démarrer l'expérience
-			<img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite">
-		</a>
-		<div class="background-video">
-			<div class="overlay"></div>
-			<video loop autoplay src="{{app.request.basepath}}/src/medias/bg_video.mp4"></video>
+<div class="loader hide">
+	<div class="text">
+		<div class="icon">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380.5 379.6"><path class="square" d="M10 10v359.6h360.5V10H40.8"/></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.5 191.6"><path class="headset" d="M200.1 87c-1.6-48.2-41.3-87-89.9-87-48.5 0-88.3 38.8-89.8 87C8.1 95.3 0 109.4 0 125.4c0 25.5 20.8 46.3 46.3 46.3 3.1 0 5.6-2.5 5.6-5.6V84.7c0-3.1-2.5-5.6-5.6-5.6-5 0-9.8.8-14.2 2.3 4.3-39.4 37.7-70.2 78.3-70.2 40.5 0 74 30.8 78.3 70.2-4.5-1.5-9.3-2.3-14.2-2.3-3.1 0-5.6 2.5-5.6 5.6V166c0 3.1 2.5 5.6 5.6 5.6 25.5 0 46.3-20.8 46.3-46.3-.3-15.9-8.4-30-20.7-38.3zM40.7 160c-16.7-2.7-29.4-17.2-29.4-34.6 0-17.4 12.8-31.9 29.4-34.6V160zm139.2 0V90.8c16.7 2.7 29.4 17.2 29.4 34.6 0 17.4-12.7 31.9-29.4 34.6z"/></svg>
 		</div>
+		<h1>Chargement en cours <span class="loader-dot"></span><span class="loader-dot"></span><span class="loader-dot"></span></h1>
+		<h2>Pour assurer une expérience optimale, branchez un casque</h2>
 	</div>
+</div>
+
+<div class="decoration">
+	<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
+	<img src="{{app.request.basepath}}/src/images/half-square.svg" alt="Half square">
+	<div class="clear"></div>
+</div>
+<div class="main-core">
+	<img src="{{app.request.basepath}}/src/images/transhumania_logo-02.svg" alt="Logo de Transhumania">
+	<p>Embarquez dans une expérience immersive et interactive dans le monde de l’humain augmenté. Quand la science fiction rejoint la réalité.</p>
+	<a class="facebook-button" href="{{loginUrl}}">
+		<img src="{{app.request.basepath}}/src/images/facebook_icon.svg" alt="Icone de Facebook">
+		Démarrer l'expérience
+		<img src="{{app.request.basepath}}/src/images/right_arrow.svg" alt="Flèche droite">
+	</a>
+	<div class="background-video">
+		<div class="overlay"></div>
+		<video loop autoplay src="{{app.request.basepath}}/src/medias/bg_video.mp4"></video>
+	</div>
+</div>
 
 {{include('partials/footer.twig')}}
