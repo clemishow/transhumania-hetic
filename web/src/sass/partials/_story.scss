@@ -16,7 +16,13 @@ footer {
   animation: fadeIn 0s ease-in-out 0s normal running 1 forwards;
 }
 
-
+.body{opacity: 0.4;fill:white;}
+.brain{
+  opacity: 0.4;
+  fill:rgba(74, 144, 226, 1);
+animation: fadeInBody .4s ease-in-out 0s alternate infinite running forwards;
+}
+.others{opacity: 0.4;fill:white;}
 
 .image-placeholder{
   position: absolute;
@@ -44,8 +50,8 @@ footer {
   z-index: 2;
   position: absolute;
   width: 20rem;
-  bottom: 6rem;
-  left: 2rem;;
+  top: 2.5rem;
+  left: 2.5rem;
   p{
     font-family: "Abrade",sans-serif;
     margin: 0;
@@ -220,7 +226,15 @@ footer {
     left: -35vw;
   }
 }
-
+.body-situation-init{
+  position: absolute;
+  z-index: 1;
+  bottom: 4rem;
+  left: 3rem;
+  img{
+    width: 7vw;
+  }
+}
 .panel-controller{
   box-shadow: 1px -1px 8px -1px black;
   position: absolute;
@@ -378,7 +392,14 @@ footer {
     opacity: 1;
   }
 }
-
+@keyframes fadeInBody{
+  0%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 
 
 @media only screen and (max-width: 1280px){

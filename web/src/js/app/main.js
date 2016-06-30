@@ -79,7 +79,7 @@ function player(video_name, switch_page) {
   player.container               = document.querySelector('.player');
   player.video                   = player.container.querySelector('video');
   player.container_controls      = player.container.querySelector('.controls');
-  // PROGRESS BAR 
+  // PROGRESS BAR
   player.seek_bar                = player.container.querySelector('.seek-bar');
   player.cursor_bar              = player.container.querySelector('.cursor-bar');
   player.progress_bar            = player.container.querySelector('.progress-bar');
@@ -108,14 +108,14 @@ function player(video_name, switch_page) {
     var progress_ratio      = player.video.currentTime / player.video.duration,
       progress_ratio_percent  = progress_ratio * 100;
 
-    // PROGRESS BAR 
+    // PROGRESS BAR
     player.progress_bar.style.webkitTransform = 'scaleX(' + progress_ratio + ')';
     player.progress_bar.style.mozTransform = 'scaleX(' + progress_ratio + ')';
     player.progress_bar.style.msTransform = 'scaleX(' + progress_ratio + ')';
     player.progress_bar.style.oTransform = 'scaleX(' + progress_ratio + ')';
     player.progress_bar.style.transform = 'scaleX(' + progress_ratio + ')';
 
-    // CURSOR 
+    // CURSOR
       player.cursor_bar.style.left = progress_ratio_percent + '%';
       video_switch = (player.video.currentTime) >= (player.video.duration-0.1);
       if (video_switch) {
@@ -136,7 +136,7 @@ function player(video_name, switch_page) {
   });
 
   player.video.addEventListener('loadeddata', function() {
-      // VIDEO LOAD 
+      // VIDEO LOAD
   }, false);
 }
 
@@ -157,9 +157,3 @@ var volume_btn   = document.querySelector('.volume-btn');
 volume_btn.addEventListener('click', function(){
   volume_audio();
 });
- 
-
-
-
-
-
