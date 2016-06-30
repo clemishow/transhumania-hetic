@@ -844,7 +844,8 @@ h1, h2, h3, h4, h5, h6 {
 *** LEO
 */
 * {
-  background: red !important; }
+  background: red !important;
+  color: blue !important; }
 
 /*
 *** MEDIAS QUERIES
