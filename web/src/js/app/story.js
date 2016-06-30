@@ -70,23 +70,35 @@ function page_ajax_dilemma(page, url_left, url_right) {
 /*
 *** TRIGGER DILEMMA ON SPACE TOUCHE
 */
-window.addEventListener("keydown",function(event) {
-  if (event.which == 32) {
-    page_ajax_dilemma('dilemma', 'browse', 'try');
+window.addEventListener('keydown', function(e) {
+  var key = e.keyCode || e.which;
+  switch(key) {
+
+    // SPACE TOUCH
+    case 32:
+      page_ajax_dilemma('dilemma', 'browse', 'try');
+    break;
+
+    // A TOUCH
+    case 65:
+      var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');
+    break;
+
+    // Z TOUCH
+    case 90:
+      var video_two = new page_ajax_player('video', 'bg_video.mp4', 'info_01');
+    break;
+
+    /****************************** EXEMPLE ******************************
+    *** POUR TEST VOS PAGES METTEZ VOTRE PAGE
+    */
+    case 69:
+      var votre_page = new page_ajax('nomdevotrepage');
+    break;
   }
 });
 
-window.addEventListener("keydown",function(event) {
-  if (event.which == 65) {
-    var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');
-  }
-});
 
-window.addEventListener("keydown",function(event) {
-  if (event.which == 90) {
-    var video_two = new page_ajax_player('video', 'bg_video.mp4', 'info_01');
-  }
-});
 
 
 /*
