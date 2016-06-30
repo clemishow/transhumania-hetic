@@ -132,11 +132,7 @@ window.addEventListener('keydown', function(e) {
     */
     // E TOUCH
     case 69:
-    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','video.mp4','video.mp4');
-    break;
-
-    case 82:
-      var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','video.mp4','video.mp4');
+    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
     break;
   }
 });

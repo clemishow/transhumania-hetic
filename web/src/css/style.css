@@ -641,6 +641,10 @@ footer {
   background-image: url("../images/images-story/pacemaker.png");
 }
 
+.image-placeholder.image-story-2 {
+  background-image: url("../images/images-story/pacemaker_accept.png");
+}
+
 .hover-informations {
   position: absolute;
   z-index: 1;
@@ -709,6 +713,21 @@ footer {
 
 .information-element.left .information-panel {
   left: -35vw;
+}
+
+.subtitles {
+  position: absolute;
+  z-index: 1;
+  top: 20vw;
+  width: 100%;
+  text-align: center;
+}
+
+.subtitles p {
+  width: 50%;
+  margin: auto;
+  font-weight: 100;
+  line-height: 1.5;
 }
 
 .circle-pointer {

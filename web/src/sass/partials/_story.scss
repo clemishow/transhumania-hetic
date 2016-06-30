@@ -67,6 +67,9 @@ animation: fadeInBody .4s ease-in-out 0s alternate infinite running forwards;
   &.image-story-1{
     background-image: url("../images/images-story/pacemaker.png");
   }
+  &.image-story-2{
+    background-image: url("../images/images-story/pacemaker_accept.png");
+  }
 }
 
 .hover-informations{
@@ -132,6 +135,19 @@ animation: fadeInBody .4s ease-in-out 0s alternate infinite running forwards;
   }
 }
 
+.subtitles{
+  position: absolute;
+  z-index: 1;
+  top: 20vw;
+  width: 100%;
+  text-align: center;
+  p{
+    width: 50%;
+    margin: auto;
+    font-weight: 100;
+    line-height: 1.5;
+  }
+}
 
 
 .circle-pointer{
