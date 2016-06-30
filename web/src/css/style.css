@@ -637,6 +637,10 @@ footer {
   width: 100%;
 }
 
+.image-placeholder.image-story-1 {
+  background-image: url("../images/images-story/pacemaker.png");
+}
+
 .hover-informations {
   position: absolute;
   z-index: 1;
@@ -681,6 +685,11 @@ footer {
 .information-element {
   position: absolute;
   width: 30rem;
+}
+
+.information-element.story-1 {
+  top: 23vw !important;
+  left: 62vw !important;
 }
 
 .information-element:nth-child(1) {

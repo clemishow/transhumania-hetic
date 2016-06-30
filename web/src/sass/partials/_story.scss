@@ -64,6 +64,9 @@ animation: fadeInBody .4s ease-in-out 0s alternate infinite running forwards;
   img{
     width: 100%;
   }
+  &.image-story-1{
+    background-image: url("../images/images-story/pacemaker.png");
+  }
 }
 
 .hover-informations{
@@ -105,7 +108,11 @@ animation: fadeInBody .4s ease-in-out 0s alternate infinite running forwards;
 
 .information-element{
   position: absolute;
-  width: 30rem;;
+  width: 30rem;
+  &.story-1{
+    top: 23vw !important;
+    left: 62vw !important;
+  }
   &:nth-child(1){
     top: 6vw;
     left: 65vw;

@@ -33,7 +33,7 @@ function voice(audio_name) {
 //   request.open('POST', 'browse', true);
 //   request.send();
 //   request = null;
-// } 
+// }
 // var choice_swipe = new variable_ajax();
 // console.log(choice_swipe);
 
@@ -119,13 +119,12 @@ window.addEventListener('keydown', function(e) {
 
     // A TOUCH
     case 65:
-    var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');
-
+    var video_two = new page_ajax_player('video', 'video.mp4', 'info_01');
     break;
 
     // Z TOUCH
     case 90:
-    var video_two = new page_ajax_player('video', 'bg_video.mp4', 'info_01');
+    var tapage = new page_ajax('info_01_pacemaker');
     break;
 
     /****************************** EXEMPLE ******************************
@@ -133,7 +132,11 @@ window.addEventListener('keydown', function(e) {
     */
     // E TOUCH
     case 69:
-    var votre_page = new page_ajax('story_1');
+    var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','video.mp4','video.mp4');
+    break;
+
+    case 82:
+      var tapage = new page_ajax_dilemma('dilemma_01_pacemaker','video.mp4','video.mp4');
     break;
   }
 });
