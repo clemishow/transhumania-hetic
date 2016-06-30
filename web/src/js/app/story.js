@@ -7,7 +7,7 @@ function audio(audio_name) {
   song.container        = document.querySelector('.audio-controller');
   song.audio            = song.container.querySelector('audio');
 
-  song.audio.volume     = 0.1; // OFF SOUND
+  song.audio.volume     = 0; // OFF SOUND
   song.audio.src        = 'src/medias/' + audio_name;
 }
 
@@ -48,7 +48,25 @@ function page_ajax(page, trigFunction) {
 
           // IF INFO 2
           else if (page == 'info_02_pacemaker') {
-            var dilemma_02 = new page_ajax('info_05_implants');
+            var dilemma_02 = new page_ajax('info_03_prosthetics');
+            var voice_track_02 = new voice('none');
+          }
+
+          // IF INFO 3
+          else if (page == 'info_03_prosthetics') {
+            var dilemma_03 = new page_ajax_dilemma('dilemma_03_prosthetics','info_05_implants','info_04_prosthetics');
+            var voice_track_05 = new voice('06-Prothese_01.wav');
+          }
+
+          // IF INFO 4
+          else if (page == 'info_04_prosthetics') {
+            var dilemma_04 = new page_ajax_dilemma('dilemma_04_prosthetics','info_05_implants','info_05_implants');
+            var voice_track_06 = new voice('07-Prothese_02.wav');
+          }
+
+          // IF INFO 5
+          else if (page == 'info_05_implants') {
+            var voice_track_07 = new voice('none');
           }
 
         });
@@ -96,8 +114,6 @@ function page_ajax_dilemma(page, url_left, url_right) {
   request.send();
   request = null;
 }
-
-
 
 
 
@@ -186,7 +202,6 @@ function onSwipeValid(direction,page) {
         // AJAX REDIRECTION AFTER SWIPE
         page_ajax(page);
         var choice = page;
-        setTimeout(function(){
           // IF CHOICE DILEMMA
           if (choice == 'info_02_pacemaker') {
             var voice_track_03 = new voice('05-Succes_pacemaker.wav');
@@ -197,7 +212,11 @@ function onSwipeValid(direction,page) {
             var voice_track_04 = new voice('04-Risques_pacemaker.wav');
             var dilemma_02 = new page_ajax_dilemma('dilemma_02_pacemaker','info_03_prosthetics','info_02_pacemaker');
           } 
-        });
+
+          // IF DILEMMA 3
+          else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics') {
+            var voice_track_08 = new voice('none');
+          } 
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
       }
