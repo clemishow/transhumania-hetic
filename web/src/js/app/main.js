@@ -117,7 +117,7 @@ function player(video_name, switch_page) {
 
     // CURSOR 
       player.cursor_bar.style.left = progress_ratio_percent + '%';
-      video_switch = (player.video.currentTime) >= (player.video.duration-0.05);
+      video_switch = (player.video.currentTime) >= (player.video.duration-0.1);
       if (video_switch) {
         player.video.currentTime = 0;
         pause();

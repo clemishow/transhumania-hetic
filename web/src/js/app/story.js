@@ -82,6 +82,7 @@ window.addEventListener('keydown', function(e) {
     // A TOUCH
     case 65:
       var video_one = new page_ajax_player('video', 'video.mp4', 'info_01');
+      
     break;
 
     // Z TOUCH
@@ -92,8 +93,9 @@ window.addEventListener('keydown', function(e) {
     /****************************** EXEMPLE ******************************
     *** POUR TEST VOS PAGES METTEZ VOTRE PAGE
     */
+    // E TOUCH
     case 69:
-      var votre_page = new page_ajax('nomdevotrepage');
+      var votre_page = new page_ajax('story_1');
     break;
   }
 });
@@ -108,8 +110,7 @@ window.addEventListener('keydown', function(e) {
 page_ajax('info_01');
 // SONG TO LOAD
 var audio_track_01 = new audio('audio.mp3');
-
-setTimeout(function(){var audio_track_02 = new audio('audio2.mp3');},2000)
+var audio_track_02 = new audio('audio2.mp3');
 
 
 /*
