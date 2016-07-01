@@ -855,8 +855,8 @@ footer {
 }
 
 .information-element.story-1 {
-  top: 23vw !important;
-  left: 62vw !important;
+  top: 27vw !important;
+  left: 63vw !important;
 }
 
 .information-element.story-2A {
@@ -870,13 +870,13 @@ footer {
 }
 
 .information-element.story-3A {
-  top: 28vw !important;
-  left: 62vw !important;
+  top: 15vw !important;
+  left: 80vw !important;
 }
 
 .information-element.story-3B {
   top: 25vw !important;
-  left: 30vw !important;
+  left: 19vw !important;
 }
 
 .information-element.story-4A {
@@ -922,6 +922,21 @@ footer {
 .information-element.story-7C {
   top: 14vw !important;
   left: 37vw !important;
+}
+
+.information-element.story-6A {
+  top: 15vw !important;
+  left: 66vw !important;
+}
+
+.information-element.story-6B {
+  top: 19vw !important;
+  left: 24vw !important;
+}
+
+.information-element.story-6C {
+  top: 14vw !important;
+  left: 47vw !important;
 }
 
 .information-element:nth-child(1) {

@@ -140,8 +140,8 @@ footer {
   position: absolute;
   width: 30rem;
   &.story-1{
-    top: 23vw !important;
-    left: 62vw !important;
+    top: 27vw !important;
+    left: 63vw !important;
   }
   &.story-2A{
     top: 28vw !important;
@@ -152,12 +152,12 @@ footer {
     left: 30vw !important;
   }
   &.story-3A{
-    top: 28vw !important;
-    left: 62vw !important;
+    top: 15vw !important;
+    left: 80vw !important;
   }
   &.story-3B{
     top: 25vw !important;
-    left: 30vw !important;
+    left: 19vw !important;
   }
   &.story-4A{
     top: 28vw !important;
@@ -194,6 +194,18 @@ footer {
   &.story-7C{
     top: 14vw !important;
     left: 37vw !important;
+  }
+  &.story-6A{
+    top: 15vw !important;
+    left: 66vw !important;
+  }
+  &.story-6B{
+    top: 19vw !important;
+    left: 24vw !important;
+  }
+  &.story-6C{
+    top: 14vw !important;
+    left: 47vw !important;
   }
   &:nth-child(1){
     top: 6vw;
