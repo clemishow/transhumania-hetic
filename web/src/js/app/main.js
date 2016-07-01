@@ -97,7 +97,7 @@ function player(video_name, switch_page) {
   player.video.src               = video_name;
 
 
-  player.video.volume = 0;
+  player.video.volume = 0.2;
 
   // PLAY
   function play() {

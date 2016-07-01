@@ -17,7 +17,7 @@ function audio(audio_name) {
   song.container        = document.querySelector('.audio-controller');
   song.audio            = song.container.querySelector('audio');
 
-  song.audio.volume     = 0; // OFF SOUND
+  song.audio.volume     = 0.1; // OFF SOUND
   song.audio.src        = 'src/medias/' + audio_name;
 }
 
@@ -31,7 +31,7 @@ function voice(audio_name) {
   voice.container        = document.querySelector('.voice-controller');
   voice.audio            = voice.container.querySelector('audio');
 
-  voice.audio.volume     = 0; // OFF SOUND
+  voice.audio.volume     = 1; // OFF SOUND
   voice.audio.src        = 'src/medias/voices/' + audio_name;
 }
 
