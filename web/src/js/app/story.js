@@ -73,7 +73,19 @@ function page_ajax(page, trigFunction) {
           // IF INFO 6
           else if (page == 'info_06_memory') {
             var dilemma_06 = new page_ajax_dilemma('dilemma_06_memory', 'info_07_ia', 'info_07_ia');
-            var voice_track_07 = new voice('10-Stockage.wav');
+            var voice_track_08 = new voice('10-Stockage.wav');
+          }
+
+          // IF INFO 6
+          else if (page == 'info_07_ia') {
+            var dilemma_07 = new page_ajax_dilemma('dilemma_07_ia', 'info_08_cells', 'info_08_cells');
+            var voice_track_09 = new voice('11-IA.wav');
+          }
+
+          // IF INFO 6
+          else if (page == 'info_08_cells') {
+            var dilemma_08 = new page_ajax_dilemma('dilemma_08_cells', 'end_01', 'end_02');
+            var voice_track_09 = new voice('12-Immortalite.wav');
           }
 
         });
@@ -221,18 +233,10 @@ function onSwipeValid(direction,page) {
           } 
 
           // IF 
-          else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics') {
+          else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics' || choice == 'info_06_memory' || choice == 'info_03_prosthetics' || choice == 'info_04_prosthetics' || choice == 'info_01_pacemaker' || choice == 'info_02_pacemaker' || choice == 'info_07_ia' || choice == 'info_08_cells' || choice == 'end_01' || choice == 'end_02') {
             var voice_track_08 = new voice('none');
           } 
 
-          else if (choice == 'info_06_memory') {
-            var voice_track_08 = new voice('none');
-          } 
-
-          // IF DILEMMA 3
-          else if (choice == 'info_07_ia') {
-            var voice_track_08 = new voice('none');
-          } 
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";
       }
