@@ -1,3 +1,12 @@
+var request = new XMLHttpRequest();
+request.open('GET', 'story?direction=left', true);
+request.onreadystatechange = function() {
+  if(this.readyState == 4) {
+    console.log('ok');
+  }
+}
+request.send("direction=left");
+request = null;
 /*
 *** AUDIO
 */
@@ -21,7 +30,7 @@ function voice(audio_name) {
   voice.container        = document.querySelector('.voice-controller');
   voice.audio            = voice.container.querySelector('audio');
 
-  voice.audio.volume     = 1; // OFF SOUND
+  voice.audio.volume     = 0; // OFF SOUND
   voice.audio.src        = 'src/medias/voices/' + audio_name;
 }
 
@@ -76,13 +85,13 @@ function page_ajax(page, trigFunction) {
             var voice_track_08 = new voice('10-Stockage.wav');
           }
 
-          // IF INFO 6
+          // IF INFO 7
           else if (page == 'info_07_ia') {
             var dilemma_07 = new page_ajax_dilemma('dilemma_07_ia', 'info_08_cells', 'info_08_cells');
             var voice_track_09 = new voice('11-IA.wav');
           }
 
-          // IF INFO 6
+          // IF INFO 8
           else if (page == 'info_08_cells') {
             var dilemma_08 = new page_ajax_dilemma('dilemma_08_cells', 'end_01', 'end_02');
             var voice_track_09 = new voice('12-Immortalite.wav');
@@ -126,8 +135,8 @@ function page_ajax_dilemma(page, url_left, url_right) {
     if(this.readyState == 4) {
       block_page.innerHTML = this.responseText;
       // TRIGGER FUNCTION SWIPE
-      var left = new onSwipeValid("left",url_left);
-      var right = new onSwipeValid("right",url_right);
+      var left = new onSwipeValid('left',url_left);
+      var right = new onSwipeValid('right',url_right);
     }
   }
   request.send();
@@ -136,48 +145,12 @@ function page_ajax_dilemma(page, url_left, url_right) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*
-*** TRIGGER DILEMMA ON SPACE TOUCH
-*/
-
 /*
 *** INIT
 */
 
 // PAGE TO LOAD
 var video_intro = new page_ajax_player('video', 'video.mp4', 'info_01_pacemaker');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -219,8 +192,30 @@ function onSwipeValid(direction,page) {
         ratio = that.limit + that.validation_size;
         that.swipe.cursor_signature.style.backgroundColor = "green";
         // AJAX REDIRECTION AFTER SWIPE
+        if (direction == 'left') {
+          var request = new XMLHttpRequest();
+          request.open('GET', 'http://localhost:9999/transhumania-hetic/web/story?direction=left', true);
+          request.onreadystatechange = function() {
+            if(this.readyState == 4) {
+              console.log('ok');
+            }
+          }
+          request.send("direction=left");
+          request = null;
+        } else {
+          var request = new XMLHttpRequest();
+          request.open('GET', 'http://localhost:9999/transhumania-hetic/web/story?direction=right', true);
+          request.onreadystatechange = function() {
+            if(this.readyState == 4) {
+              console.log('ok');
+            }
+          }
+          request.send("direction=right");
+          request = null;
+        }
         page_ajax(page);
         var choice = page;
+
           // IF CHOICE DILEMMA
           if (choice == 'info_02_pacemaker') {
             var voice_track_03 = new voice('05-Succes_pacemaker.wav');
@@ -232,7 +227,7 @@ function onSwipeValid(direction,page) {
             var dilemma_02 = new page_ajax_dilemma('dilemma_02_pacemaker','info_03_prosthetics','info_02_pacemaker');
           } 
 
-          // IF 
+          // IF PAGE INFO : CUT VOICE 
           else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics' || choice == 'info_06_memory' || choice == 'info_03_prosthetics' || choice == 'info_04_prosthetics' || choice == 'info_01_pacemaker' || choice == 'info_02_pacemaker' || choice == 'info_07_ia' || choice == 'info_08_cells' || choice == 'end_01' || choice == 'end_02') {
             var voice_track_08 = new voice('none');
           } 
