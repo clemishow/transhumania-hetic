@@ -6,7 +6,7 @@ request.onreadystatechange = function() {
   }
 }
 request.send("direction=left");
-request = null; 
+request = null;
 
 /*
 *** AUDIO
@@ -17,7 +17,7 @@ function audio(audio_name) {
   song.container        = document.querySelector('.audio-controller');
   song.audio            = song.container.querySelector('audio');
 
-  song.audio.volume     = 0.1; // OFF SOUND
+  song.audio.volume     = 1; // OFF SOUND
   song.audio.src        = 'src/medias/' + audio_name;
 }
 
@@ -47,14 +47,14 @@ function page_ajax(page, trigFunction) {
     if(this.readyState == 4) {
       block_page.innerHTML = this.responseText;
       var container_btn_next = document.querySelector('.container-btn-next');
-      
+
         container_btn_next.addEventListener('click', function(){
-          
+
           // IF INFO 1
           if (page == 'info_01_pacemaker') {
             var dilemma_01 = new page_ajax_dilemma('dilemma_01_pacemaker','dilemma_02_pacemaker','info_02_pacemaker');
             var voice_track_02 = new voice('03-Pacemaker.wav');
-          } 
+          }
 
           // IF INFO 2
           else if (page == 'info_02_pacemaker') {
@@ -220,18 +220,18 @@ function onSwipeValid(direction,page) {
           // IF CHOICE DILEMMA
           if (choice == 'info_02_pacemaker') {
             var voice_track_03 = new voice('05-Succes_pacemaker.wav');
-          } 
+          }
 
           // IF DILEMMA 2
           else if (choice == 'dilemma_02_pacemaker') {
             var voice_track_04 = new voice('04-Risques_pacemaker.wav');
             var dilemma_02 = new page_ajax_dilemma('dilemma_02_pacemaker','info_03_prosthetics','info_02_pacemaker');
-          } 
+          }
 
-          // IF PAGE INFO : CUT VOICE 
-          else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics' || choice == 'info_06_memory' || choice == 'info_03_prosthetics' || choice == 'info_04_prosthetics' || choice == 'info_01_pacemaker' || choice == 'info_02_pacemaker' || choice == 'info_07_ia' || choice == 'info_08_cells' || choice == 'end_01' || choice == 'end_02') {
+          // IF PAGE INFO : CUT VOICE
+          else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics' || choice == 'info_06_memory' || choice == 'info_03_prosthetics' || choice == 'info_04_prosthetics' || choice == 'info_02_pacemaker' || choice == 'info_07_ia' || choice == 'info_08_cells' || choice == 'end_01' || choice == 'end_02') {
             var voice_track_08 = new voice('none');
-          } 
+          }
 
       } else if(ratio < 259){
         that.swipe.cursor_signature.style.backgroundColor = "background-color: rgba(79, 136, 255, 1) - #090f1b;";

@@ -153,9 +153,6 @@ $app->get('/story', function() use ($app, $fb, $facebook) {
     $userDB         = $prepare->fetch();
     $data['userDB'] = $userDB;
 
-    $data['direction'] = $_POST['direction'];
-    var_dump($data['direction']);
-
 	return $app['twig']->render('pages/story.twig', $data);
 })
 ->bind('story');
