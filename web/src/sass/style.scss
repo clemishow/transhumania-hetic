@@ -32,20 +32,6 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: $font-title;
 }
 
-.container-btn-next {
-	cursor: pointer;
-	position: absolute;
-		top: 50px;
-		right: 50px;
-
-	.btn-next {
-		background: $color-light;
-		color: $color-dark;
-		padding: 10px 30px;
-		border-radius: 10px;
-	}
-}
-
 /*
 *** MEDIAS QUERIES
 */
