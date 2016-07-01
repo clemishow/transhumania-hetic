@@ -1,5 +1,4 @@
 {{include('partials/header.twig')}}
-{{dump(direction) }}
 <!-- BLOCK PAGE => ACUTAL PAGE AJAX -->
 <div class="block-page"></div>
 <div id="human_body" class="body-situation-init">
@@ -54,7 +53,7 @@
     <div class="upgrades-status">
       <div class="row">
         <div class="data-item success">
-          <h2>Électrodes cervicales</h2>
+          <h2>Pacemaker</h2>
           <h3>Implanté</h3>
         </div>
         <div class="data-item locked">
@@ -91,5 +90,6 @@
 <div class="voice-controller">
   <audio autoplay="true" src="{{app.request.basepath}}"></audio>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="{{app.request.basepath}}/src/js/app/story.js"></script>
 {{include('partials/footer.twig')}}
