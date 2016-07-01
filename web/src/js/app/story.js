@@ -66,7 +66,14 @@ function page_ajax(page, trigFunction) {
 
           // IF INFO 5
           else if (page == 'info_05_implants') {
-            var voice_track_07 = new voice('none');
+            var dilemma_05 = new page_ajax_dilemma('dilemma_05_implants', 'info_06_memory', 'info_06_memory');
+            var voice_track_07 = new voice('08-Implants.wav');
+          }
+
+          // IF INFO 6
+          else if (page == 'info_06_memory') {
+            var dilemma_06 = new page_ajax_dilemma('dilemma_06_memory', 'info_07_ia', 'info_07_ia');
+            var voice_track_07 = new voice('10-Stockage.wav');
           }
 
         });
@@ -213,8 +220,17 @@ function onSwipeValid(direction,page) {
             var dilemma_02 = new page_ajax_dilemma('dilemma_02_pacemaker','info_03_prosthetics','info_02_pacemaker');
           } 
 
-          // IF DILEMMA 3
+          // IF 
           else if (choice == 'info_05_implants' || choice == 'info_04_prosthetics') {
+            var voice_track_08 = new voice('none');
+          } 
+
+          else if (choice == 'info_06_memory') {
+            var voice_track_08 = new voice('none');
+          } 
+
+          // IF DILEMMA 3
+          else if (choice == 'info_07_ia') {
             var voice_track_08 = new voice('none');
           } 
       } else if(ratio < 259){
